@@ -11,13 +11,8 @@ using namespace std;
 #include<cstdio>
 #include<cstdlib>
 #include<list>
-#include<stack>
-#include<forward_list>
-#include<deque>
-#include<queue>
-#include<vector>
-#include<map>
-#include<set>
+
+
 //using  std::cin;
 //using std::cout;
 //using std::list;
