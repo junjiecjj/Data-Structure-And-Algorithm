@@ -11,8 +11,6 @@ using namespace std;
 #include<cstdlib>
 #include<deque>
 
-
-
 void show(const deque<int> Deque)
 {
     cout << "打印队列" << endl;
@@ -51,6 +49,7 @@ int main(int argc,char *argv[])
     }
     show(Deque);
     cout << "队列大小为:" << Deque.size() << endl;           //deque.size()返回队列元素数量
+    cout << "队列能保存的最大元素数量为:" << Deque.max_size() << endl;           //deque.size()返回队列能保存的最大元素数量
 
     cout << "队尾元素：" << Deque.back() << endl;
     cout << "删除队尾元素pop_back()" << endl;
