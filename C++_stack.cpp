@@ -19,7 +19,7 @@ using namespace std;
 //    for( auto i : stack1 )
 //    {
   //      cout << i <<"  ";                        //stack没有stack<T>::iterator迭代器
-  //                                                   const_iterator也没有
+  //                                                   也没有const_iterator
     //}
    // cout << endl;
 
