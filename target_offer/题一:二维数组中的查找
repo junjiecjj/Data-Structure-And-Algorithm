@@ -18,8 +18,8 @@ using namespace std;
 class Solution {
 public:
     bool Find(int target, vector<vector<int>>  Array) {
-        int m = Array.size();
-        int n = Array[0].size();
+        int m = Array.size();          //Array的行数
+        int n = Array[0].size();        //Array的列数
 
         if(m != 0 && n != 0)
         {
