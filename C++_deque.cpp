@@ -65,5 +65,12 @@ int main(int argc,char *argv[])
     cout << "队列大小为:" << Deque.size() << endl;           //deque.size()返回队列元素数量
     cout << "队列中第4个元素为:" << Deque[3] << endl;            //deque.at(n)和deque[n]返回队列第n+1个元素
     cout << "队列中第7个元素为:" << Deque.at(6) << endl;
+
+    cout << "通过Deque.at(n)和Deque[n]改变Deque" << endl;
+    Deque.at(4) = 78;
+    Deque.at(7) = 99;
+
+    show(Deque);
     return 0;
 }
+
