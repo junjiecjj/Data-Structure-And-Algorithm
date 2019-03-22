@@ -4,10 +4,12 @@
 >> Mail: 2716705056qq.com
 >> Created Time: 2019.03.08
 ************************************************************************/
-
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdbool.h>
+#include<iostream>
+using namespace std;
+#include<cstdio>
+#include<cstdlib>
+#include<cstdbool>
+#include<queue>
 #define MAXTREENODE  100
 
 
@@ -99,17 +101,17 @@ Node *CreatBitTree()//递归前序建立二叉树(一般二叉树，不一定是
     scanf("%d",&x);
     if(x < 0)
     {
-        b = NUL;
+        pr = NULL;
     }
     else
     {
         pr = (Node *)malloc(sizeof(Node));
         pr -> value = x;
-        b ->left = CreatBitTree();
-        b - >right = CreatBitTree();
+        pr -> left = CreatBitTree();
+        pr -> right = CreatBitTree();
     }
 
-    return b;
+    return pr;
 }
 
 
@@ -126,8 +128,6 @@ void PreOrder(Node *node,void (*pfun)(int value))//先序遍历，递归实现
         PreOrder(node -> left,pfun);
         PreOrder(node -> right,pfun);
     }
-    else
-        printf("#  ");
 }
 
 void PreOrderNoRecurse1(Node *Root)//先序遍历，非递归实现，版本一
@@ -155,7 +155,6 @@ void PreOrderNoRecurse1(Node *Root)//先序遍历，非递归实现，版本一
                 stack[top] = p -> left;
             }
         }
-        printf("\n\n");
     }
 }
 
@@ -176,7 +175,6 @@ void PreOrderNoRecurse2(Node *Root)//先序遍历，非递归实现，版本二
         p = stack[num];
         p = p -> right;
     }
-    printf("\n\n");
 }
 
 void InOrder(Node *node,void (*pfun)(int value))//中序遍历，递归实现
@@ -187,8 +185,6 @@ void InOrder(Node *node,void (*pfun)(int value))//中序遍历，递归实现
         (*pfun)(node -> value);
         InOrder(node -> right,pfun);
     }
-    else
-        printf("#  ");
 }
 
 void InOrderNORecurse1(Node *Root)//中序遍历,非递归实现,版本一
@@ -222,7 +218,7 @@ void InOrderNORecurse2(Node *Root)//中序遍历,非递归实现,版本二,与�
 {
     Node *stack[MAXTREENODE];//stack保留的是未打印的节点
 
-    num = 0;
+    int num = 0;
     Node *p = Root;
     while(p != NULL || num > 0)
     {
@@ -247,8 +243,6 @@ void PostOrder(Node *node,void (*pfun)(int value))//后序遍历，递归实现
         PostOrder(node -> right,pfun);
         (*pfun)(node -> value);
     }
-    else
-        printf("#  ");
 }
 
 void PostOrderNoRecurse1(Node *Root)//后续遍历，非递归实现，版本1
@@ -285,7 +279,7 @@ void PostOrderNoRecurse1(Node *Root)//后续遍历，非递归实现，版本1
                     sign = 0;
                 }
             }
-        }while(top != -1)
+        }while(top != -1);
     }
 }
 
@@ -318,7 +312,29 @@ void PostOrderNoRecurse2(Node *Root)//后续遍历，非递归实现，版本2
     printf("\n\n");
 }
 
-void LevelOrder(Node *Root)//从上到下，从左到右，层次遍历
+void LevelOrder1(Node *Root)//从上到下，从左到右，层次遍历,递归实现
+{
+    queue<Node *> Queue;
+    if(Root == NULL)
+        return;
+    else
+    {
+        Queue.push(Root);
+    }
+    while(!Queue.empty())
+    {
+        Node *ptr = Queue.front();
+        printf("%d  ",ptr -> value);
+        Queue.pop();
+        if(ptr -> left != NULL)
+            Queue.push(ptr -> left);
+        if(ptr -> right != NULL)
+            Queue.push(ptr ->right);
+    }
+    printf("\n\n");
+}
+
+void LevelOrder2(Node *Root)//从上到下，从左到右，层次遍历,非递归实现
 {
 
 }
@@ -435,7 +451,7 @@ int main(int argc, char *argv[])
     int B;
     Tree *mytree = (Tree *)malloc(sizeof(Tree));
     TreeInitial(mytree);
-    B = Insert(mytree,10);
+    Insert(mytree,10);
     Insert(mytree,6);Insert(mytree,14);Insert(mytree,3);Insert(mytree,8);Insert(mytree,12);Insert(mytree,16);Insert(mytree,1);Insert(mytree,4);Insert(mytree,7);
     Insert(mytree,9);Insert(mytree,11);Insert(mytree,13);Insert(mytree,15);Insert(mytree,17);Insert(mytree,21);Insert(mytree,20);
 
@@ -445,17 +461,40 @@ int main(int argc, char *argv[])
     PreOrder(mytree -> Root,&show);
     printf("\n\n");
 
-    printf("非递归先序遍历\n");
-    PreOrderNoRecurse(mytree -> Root);
+    printf("非递归先序遍历1\n");
+    PreOrderNoRecurse1(mytree -> Root);
+    printf("\n\n");
+
+    printf("非递归先序遍历2\n");
+    PreOrderNoRecurse2(mytree -> Root);
     printf("\n\n");
 
     printf("递归中序遍历\n");
     InOrder(mytree -> Root,&show);
     printf("\n\n");
 
+    printf("非递归递归中序遍历1\n");
+    InOrderNORecurse1(mytree -> Root);
+    printf("\n\n");
+
+    printf("非递归递归中序遍历2\n");
+    InOrderNORecurse2(mytree -> Root);
+    printf("\n\n");
+
     printf("递归后序遍历\n");
     PostOrder(mytree -> Root,&show);
     printf("\n\n");
+
+    printf("非递归递归后序遍历1\n");
+    PostOrderNoRecurse1(mytree -> Root);
+    printf("\n\n");
+
+    printf("非递归递归后序遍历2\n");
+    PostOrderNoRecurse2(mytree -> Root);
+    printf("\n\n");
+
+    printf("层次遍历:\n");
+    LevelOrder1(mytree -> Root);
 
     printf("树深度为%d\n",getDeep(mytree -> Root));
 
