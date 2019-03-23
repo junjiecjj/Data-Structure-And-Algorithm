@@ -41,12 +41,18 @@ int main(int argc, char *argv[])
     cout << S << endl;
     S.push_back('N');
     S.push_back('P');
-    //S.push_front('M');
+
+    cout << "字符串不支持string.push_front" << endl;
+
+    //S.push_front('M');                        //string不支持string.push_front()
     cout << S << endl;
     cout << "字符串最后的元素为:" << S.back() << endl;
     cout << "字符串开始的元素为:" << S.front() << endl;
     cout << "删除字符串S最后的元素:" << endl;
     S.pop_back();
+
+    cout << "字符串不支持string.pop_front" << endl;
+    //S.pop_front()            //string不支持string.pop_front()
     cout << S << endl;
     show(S);
     Show(S);
@@ -58,6 +64,10 @@ int main(int argc, char *argv[])
     cout << S << endl;
 
     S[8] = 'Q';
+    cout << S << endl;
+
+    cout << "清空字符串" << endl;
+    S.clear();
     cout << S << endl;
     //cout << stoi(argv[1]) <<  endl;
     return 0;
