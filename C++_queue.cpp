@@ -10,7 +10,14 @@ using namespace std;
 #include<cstdio>
 #include<cstdlib>
 #include<queue>
-
+#include<list>
+#include<forward_list>
+#include<deque>
+#include<stack>
+#include<map>
+#include<set>
+#include<vector>
+#include<string>
 
 int main(int argc,char *argv[])
 {
@@ -33,5 +40,9 @@ int main(int argc,char *argv[])
     cout << Queue.back() << endl;                              //queue.back()返回队首的元素,但不删除元素
 
     //cout << "队列中第4个元素为:" << Queue[3] << endl;              //queue<int>不支持Queue.at(n)和queue[n]
+    
+    cout << "队列是否为空,0代表非空:" << Queue.empty() << endl;
     cout << "队列大小为:" << Queue.size() << endl;
+
+    //Queue.clear();  队列没有queue.clear()
 }
