@@ -3,7 +3,6 @@
 >> Author: chenjunjie
 >> Mail: 2716705056qq.com
 >> Created Time: 2019.03.13
-这是介绍C++中双向链表list的使用方法的代码
 ************************************************************************/
 
 #include<iostream>
@@ -11,8 +10,13 @@ using namespace std;
 #include<cstdio>
 #include<cstdlib>
 #include<list>
-
-
+#include<stack>
+#include<forward_list>
+#include<deque>
+#include<queue>
+#include<vector>
+#include<map>
+#include<set>
 //using  std::cin;
 //using std::cout;
 //using std::list;
@@ -71,8 +75,10 @@ int main(int argc,char *argv[])
     cout << list1.front() << endl;list1.pop_front();
     cout << list1.front() << endl;list1.pop_front();
 
-    //cout << "清空list1" << endl;
-    //list1.clear();
+    cout << "清空list1" << endl;
+    list1.clear();
+    cout << "list1的大小为:" << list1.size() << endl;
+
     show1(list1);
     return 0;
 }
