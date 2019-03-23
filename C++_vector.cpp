@@ -61,6 +61,10 @@ int main(int argc, char *argv[])
     vec[4] = 99;
 
     show(vec);
+
+    cout << "清空向量" << endl;
+    vec.clear();
+    cout << "vector的容量大小为:" << vec.size() << endl;
     return 0;
 
 }
