@@ -37,9 +37,10 @@ public:
         queue<TreeNode *> Queue;
         Queue.push(pRoot);
         bool flag = false;
+        vector<int> vec;
         while(!Queue.empty())
         {
-            vector<int> vec;
+            //vector<int> vec;
             int size = Queue.size();
             for(int i = 0; i < size; i++)
             {
@@ -54,6 +55,7 @@ public:
             if(flag)
                 reverse(vec.begin(),vec.end());
             result.push_back(vec);
+            vec.clear();
             flag = !flag;
         }
         return result;
