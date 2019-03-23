@@ -43,7 +43,7 @@ int main(int argc,char *argv[])
     //cout << "栈的max_size:" << Stack.max_size() << endl;         //stack<T>没有.max_size成员
     cout << "栈顶元素:";
     cout << Stack.top() << endl;
-    cout << "删除栈顶元素:;
+    cout << "删除栈顶元素";
     Stack.pop();
 
     cout << "栈顶元素";
@@ -64,3 +64,14 @@ int main(int argc,char *argv[])
 
     return 0;
 }
+
+/*
+输出为:
+
+栈的大小9
+栈顶元素:9
+删除栈顶元素栈顶元素8
+删除栈顶元素7
+栈是否为空,0为非空,1为空:0
+6
+ * /
