@@ -9,8 +9,16 @@
 using namespace std;
 #include<cstdio>
 #include<cstdlib>
+#include<vector>
+#include<string>
+#include<list>
+#include<forward_list>
 #include<array>
-
+#include<deque>
+#include<stack>
+#include<queue>
+#include<map>
+#include<set>
 
 void show(const array<int, 10> Array)
 {
@@ -34,12 +42,11 @@ int main(int argc, char *argv[])
     //cout << "向数组首部添加元素:" << endl;
 
     //Array.push_front(13);
-    //cout << "数组大小为:" << Array.size() << endl;         //array有array.size(),array.max_size(), array.at(n)和array[n]等操作
-
+    //cout << "数组大小为:" << Array.size() << endl;
     //cout << "数组最大容量为:" << Array.max_size() << endl;
 
     cout << "数组最后的元素为:" << Array.back() << endl;
-    cout << "数组首部的元素为:" << Array.front() << endl;
+    cout << "数组首部的元素为:" << Array.front() << endl;           //array有array.size(),array.max_size(), array.at(n)和array[n],array.back(),array.front()等操作
 
     cout << "数组第四个元素为:" << Array.at(3) << endl;
     cout << "数组第六个元素为:" << Array[5] << endl;
@@ -50,5 +57,10 @@ int main(int argc, char *argv[])
     Array[5] = 77;
 
     show(Array);
+
+    cout << "清空数组" << endl;
+    //Array.clear();                      //因为数组不能改变大小，所以没有array.clear()
+    cout << "数组大小为:" << Array.size() << endl;
+
     return 0;
 }
