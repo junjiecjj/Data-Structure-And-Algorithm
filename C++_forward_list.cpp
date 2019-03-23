@@ -75,6 +75,7 @@ int main(int argc,char *argv[])
     cout << list1.front() << endl;list1.pop_front();
     cout << list1.front() << endl;list1.pop_front();
 
+    show(list1);
     cout << "单向链表是否为空,0代表非空，1代表空:" << list1.empty()  << endl;
     cout << "清空list1" << endl;
     list1.clear();
@@ -82,3 +83,20 @@ int main(int argc,char *argv[])
     show1(list1);
     return 0;
 }
+
+/*
+输出为:
+
+
+list1最大可保存的元素数量为:1152921504606846975
+list1是否有元素:0
+9  8  7  6  5  4  3  2  1  0  
+从头部删除元素
+9
+8
+7  6  5  4  3  2  1  0  
+单向链表是否为空,0代表非空，1代表空:0
+清空list1
+
+
+ */
