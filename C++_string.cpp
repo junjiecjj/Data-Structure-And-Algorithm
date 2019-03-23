@@ -72,3 +72,24 @@ int main(int argc, char *argv[])
     //cout << stoi(argv[1]) <<  endl;
     return 0;
 }
+/*
+ 输出为:
+字符串S的元素个数为:21
+字符串S的最大元素个数为:9223372036854775807
+chen junjie!!!, hello
+字符串不支持string.push_front
+chen junjie!!!, helloNP
+字符串最后的元素为:P
+字符串开始的元素为:c
+删除字符串S最后的元素:
+字符串不支持string.pop_front
+chen junjie!!!, helloN
+chen junjie!!!, helloN
+c  h  e  n     j  u  n  j  i  e  !  !  !  ,     h  e  l  l  o  N  
+字符串第7个元素为:u
+字符串第8个元素为:n
+通过S.at(n)和S[n]改变S
+chen juPjie!!!, helloN
+chen juPQie!!!, helloN
+清空字符串
+ */
