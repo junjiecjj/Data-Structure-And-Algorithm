@@ -1,15 +1,23 @@
-/*************************************************************************
+/*********************************************************************
 >> File Name: 双端队列.cpp
 >> Author: chenjunjie
 >> Mail: 2716705056qq.com
 >> Created Time: 2019.03.15
-************************************************************************/
+*********************************************************************/
 
 #include<iostream>
 using namespace std;
 #include<cstdio>
 #include<cstdlib>
+#include<string>
+#include<vector>
 #include<deque>
+#include<queue>
+#include<list>
+#include<forward_list>
+#include<map>
+#include<set>
+
 
 void show(const deque<int> Deque)
 {
@@ -71,6 +79,11 @@ int main(int argc,char *argv[])
     Deque.at(7) = 99;
 
     show(Deque);
+
+    cout << "清空双端队列" << endl;
+    Deque.clear();
+    cout << "队列大小为:" << Deque.size() << endl;
+    show(Deque);
+
     return 0;
 }
-
