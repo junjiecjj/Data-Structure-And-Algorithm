@@ -343,77 +343,78 @@ Node* MergeOrderList1(Node* pHead1, Node* pHead2)
 {
     Node* pTail = NULL;//指向新链表的最后一个结点 pTail->next去连接
     Node* newHead = NULL;//指向合并后链表第一个结点
-    if (pHead1 == NULL)
+    Node *p1 = pHead1;
+    Node *p2 = pHead2;
+    if (p1 == NULL)
     {
-        return pHead2;
+        return p2;
     }
-    else if(pHead2 == NULL)
+    else if(p2 == NULL)
     {
-        return pHead1;
+        return p1;
     }else
     {
         //确定头指针
-        if ( pHead1-> value < pHead2->value)
+        if ( p1-> value < p2->value)
         {
-            newHead = pHead1;
-            pHead1 = pHead1->next;//指向链表的第二个结点
+            newHead = p1;
+            p1 = p1->next;//指向链表的第二个结点
         }
         else
         {
-            newHead = pHead2;
-            pHead2 = pHead2->next;
+            newHead = p2;
+            p2 = p2->next;
         }
         pTail = newHead;//指向第一个结点
-        while ( pHead1 && pHead2)
+        while ( p1 && p2)
         {
-            if ( pHead1->value < pHead2->value )
+            if ( p1->value < p2->value )
             {
-                pTail->next = pHead1;
-                pHead1 = pHead1->next;
+                pTail->next = p1;
+                p1 = p1->next;
             }
             else
             {
-                pTail->next = pHead2;
-                pHead2 = pHead2->next;
+                pTail->next = p2;
+                p2 = p2->next;
             }
             pTail = pTail->next;
 
         }
-        if(pHead1 == NULL)
+        if(p1 == NULL)
         {
-            pTail->next = pHead2;
+            pTail->next = p2;
         }
-        else if(pHead2 ==  NULL)
+        else if(p2 ==  NULL)
         {
-            pTail->next = pHead1;
+            pTail->next = p1;
         }
         return newHead;
     }
 }
 
 
-Node *MergeOrderList2(Node *pHead1, Node *pHead2)//合并有序链表,递归实现
-{
-    Node *newHead;
-    if(pHead1 == NULL)
+Node* MergeOrderList2(Node* pHead1, Node* pHead2){
+    if (pHead1 == NULL)
+    {
         return pHead2;
+    }
     else if(pHead2 == NULL)
-        return pHead1;
+    {
+        return pHead2;
+    }
+    Node* newHead = NULL;
+    if (pHead1->value <= pHead2->value)
+    {
+        newHead = pHead1;
+        newHead->next = MergeOrderList2(pHead1->next, pHead2);
+    }
     else
     {
-        if(pHead1 -> value < pHead2 -> value)
-        {
-            newHead = pHead1;
-            newHead -> next = MergeOrderList2(pHead1 -> next, pHead2);
-        }
-        else
-        {
-            newHead = pHead2;
-            newHead -> next = MergeOrderList2(pHead1, pHead2 -> next);
-
-        }
+        newHead = pHead2;
+        newHead->next = MergeOrderList2(pHead1, pHead2->next);
     }
-    return newHead;
+        return newHead;
 }
 
 
@@ -501,15 +502,17 @@ int main(int argc,char *argv[])
     Traverse(myList,&showNode);
     cout << endl;
 
+    printf("反转链表，非递归实现\n");
     reverseList(myList);
     getListNodeNum( myList);
     Traverse(myList,&showNode);
-    cout << endl;
+    cout << '\n';
 
+    cout << "反转链表,递归实现\n";
     myList -> head = reverseListRecurse(myList -> head);
     getListNodeNum( myList);
     Traverse(myList,&showNode);
-    cout << endl;
+    cout << '\n';
 
     Node *ptr1 = findKthTail2(myList -> head,3);
     printf("倒数第三个节点为:%d\n",ptr1 -> value);
@@ -517,6 +520,7 @@ int main(int argc,char *argv[])
     Node *ptr2 = findKthTail2(myList -> head,3);
     printf("倒数第三个节点为:%d\n",ptr2 -> value);
 
+    printf("删除头部两个和尾部最后两个元素\n");
     int *a;
     a = deleteFromHead( myList);
     int *b;
@@ -534,13 +538,13 @@ int main(int argc,char *argv[])
 
     //emptyList( myList );
 
-    cout << "逆序打印链表" << endl;
+    cout << "逆序打印链表,非递归实现" << endl;
     vector<int> Result = printListformTailtoHead1(myList);
     for(auto i : Result)
     {
         cout << i << "  ";
     }
-    cout << endl;
+    cout << "\n\n";
 
     getListNodeNum( myList);
     Traverse(myList,&showNode);
@@ -560,12 +564,17 @@ int main(int argc,char *argv[])
     Traverse(myList1,&showNode);
     printf("\n");
 
-    Node *MergeList = (Node *)malloc(sizeof(Node));
-    MergeList = MergeOrderList1(myList -> head, myList1 -> head);
+    List *myList_copy = myList;
+
+    printf("合并链表，非递归实现\n");
+    Node *MergeList = MergeOrderList1(myList -> head, myList1 -> head);
     Traverse1(MergeList,&showNode);
+    cout << '\n';
 
+    Traverse(myList_copy,&showNode);
+    Traverse(myList1,&showNode);
 
-    cout << "逆序打印链表" << endl;
+    cout << "逆序打印链表,递归实现" << endl;
     vector<int> REsult;
     REsult = printListformTailtoHead2(MergeList);
     for(auto i : REsult)
@@ -573,7 +582,63 @@ int main(int argc,char *argv[])
         cout << i << "  ";
     }
     cout << endl;
+/*
+    printf("合并链表，递归实现\n");
+    Node *MergeList1 = MergeOrderList2(myList -> head, myList1 -> head);
+    Traverse1(MergeList1,&showNode);
+    cout << '\n';
 
+    Traverse(myList,&showNode);
+    Traverse(myList1,&showNode);
 
+    cout << "逆序打印链表,递归实现" << endl;
+    vector<int> RESult;
+    RESult = printListformTailtoHead2(MergeList1);
+    for(auto i : RESult)
+    {
+        cout << i << "  ";
+    }
+    cout << endl;
+*/
     return 0;
 }
+
+/*
+输出为:
+List has 8 nodes
+1  3  5  7  9  11  13  15
+
+反转链表，非递归实现
+List has 8 nodes
+15  13  11  9  7  5  3  1
+
+反转链表,递归实现
+List has 8 nodes
+1  3  5  7  9  11  13  15
+
+倒数第三个节点为:11
+倒数第三个节点为:11
+删除头部两个和尾部最后两个元素
+a = 1,b = 3,c = 15,d = 13
+
+List has 4 nodes
+5  7  9  11
+
+逆序打印链表,非递归实现
+11  9  7  5
+
+List has 4 nodes
+5  7  9  11
+
+List has 8 nodes
+2  4  6  8  10  12  14  16
+
+合并链表，非递归实现
+2  4  5  6  7  8  9  10  11  12  14  16
+
+5  6  7  8  9  10  11  12  14  16        //myList和myList1被改变了,为什么会这样?????
+2  4  5  6  7  8  9  10  11  12  14  16
+逆序打印链表,递归实现
+16  14  12  11  10  9  8  7  6  5  4  2
+
+*/
