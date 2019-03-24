@@ -136,6 +136,9 @@ int main(int argc, char *argv[])
     double d = stod(S3);
     cout << "double d = " << d << endl;
 
+    string S4 = "chen";
+    //string S5 = to_string(S4);不能这么干
+    //cout << "string S5 = " << S5 << endl;
     return 0;
 }
 /*
