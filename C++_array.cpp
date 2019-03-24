@@ -19,18 +19,21 @@ using namespace std;
 #include<queue>
 #include<map>
 #include<set>
+#include<algorithm>
+#include<numeric>
 
-void show(const array<int, 10> Array)
+void show(const array<int, 18> Array)
 {
+    cout << "打印数组\n";
     for(auto i : Array)
     {
         cout << i << "  ";                              //array有array.begin(),array.cbegin(),array.rgegin(),array.crbegin()等
     }
-    cout << endl;
+    cout << "\n\n";
 }
 int main(int argc, char *argv[])
 {
-    array<int, 10> Array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    array<int, 18> Array = {18, 20, 13, 4, 21, 16, 7, 8, 11,32,10,12,100,65, 10,33,76,1};
     show(Array);
     cout << "数组大小为:" << Array.size() << endl;
     cout << "数组最大容量为:" << Array.max_size() << endl;
@@ -58,6 +61,23 @@ int main(int argc, char *argv[])
 
     show(Array);
 
+    auto result = find(Array.cbegin(), Array.cend(), 7);
+    for(auto i = result; i != Array.end(); i++)
+        cout << *i << "  ";
+    cout << endl;
+    cout << "找到 7 了:" << *result << endl;
+
+    cout << "反转并打印数组\n";
+    reverse(Array.begin(),Array.end());
+    show(Array);
+
+    cout << "排序并打印数组\n";
+    sort(Array.begin(),Array.end());
+    show(Array);
+
+    int sum  = accumulate(Array.cbegin(), Array.array::cend(), 0);
+    cout << "数组和为:" << sum << endl;
+
     cout << "清空数组" << endl;
     //Array.clear();                      //因为数组不能改变大小，所以没有array.clear()
     cout << "数组大小为:" << Array.size() << endl;
@@ -66,15 +86,32 @@ int main(int argc, char *argv[])
 }
 /*
 输出为:
-1  2  3  4  5  6  7  8  9  10  
-数组大小为:10
-数组最大容量为:10
-数组最后的元素为:10
-数组首部的元素为:1
+
+打印数组
+18  20  13  4  21  16  7  8  11  32  10  12  100  65  10  33  76  1  
+
+数组大小为:18
+数组最大容量为:18
+数组最后的元素为:1
+数组首部的元素为:18
 数组第四个元素为:4
-数组第六个元素为:6
+数组第六个元素为:16
 利用array.at(n)和arry[n]改变数组
-1  2  3  33  5  77  7  8  9  10  
+打印数组
+18  20  13  33  21  77  7  8  11  32  10  12  100  65  10  33  76  1  
+
+7  8  11  32  10  12  100  65  10  33  76  1  
+找到 7 了:7
+反转并打印数组
+打印数组
+1  76  33  10  65  100  12  10  32  11  8  7  77  21  33  13  20  18  
+
+排序并打印数组
+打印数组
+1  7  8  10  10  11  12  13  18  20  21  32  33  33  65  76  77  100  
+
+数组和为:547
 清空数组
-数组大小为:10
+数组大小为:18
+
 */
