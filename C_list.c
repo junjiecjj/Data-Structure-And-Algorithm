@@ -339,7 +339,7 @@ int getLoopLength(Node* head){//计算环的长度
 }
 
 
-Node* MergeOrderList1(Node* pHead1, Node* pHead2)
+Node* MergeOrderList1(Node* pHead1, Node* pHead2)//会改变原来要合并的两个链表
 {
     Node* pTail = NULL;//指向新链表的最后一个结点 pTail->next去连接
     Node* newHead = NULL;//指向合并后链表第一个结点
@@ -394,7 +394,7 @@ Node* MergeOrderList1(Node* pHead1, Node* pHead2)
 }
 
 
-Node* MergeOrderList2(Node* pHead1, Node* pHead2){
+Node* MergeOrderList2(Node* pHead1, Node* pHead2){//会改变原来要合并的两个链表
     if (pHead1 == NULL)
     {
         return pHead2;
