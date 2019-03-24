@@ -16,6 +16,8 @@ using namespace std;
 #include<deque>
 #include<stack>
 #include<queue>//优先级队列priority_queue包含在queue库中
+#include<algorithm>
+#include<numeric>
 
 int main(int argc,char *argv[])
 {
@@ -36,6 +38,11 @@ int main(int argc,char *argv[])
     cout << "现在优先级最大的元素为:" << Pque.top()  << endl;
     Pque.pop();
     cout << "队列是否为空:" << Pque.empty() << endl;
+
+    //Pque.sort();
+    //Pque.reverse();
+    //auto res = find(Pque.begin(),Pque.end(), 3);
+    //int sum  = accumulate(Pque.begin(),Pque.end(),0)
 
     //Pque.clear()          //优先队列没有Pque.clear()
     return 0;
