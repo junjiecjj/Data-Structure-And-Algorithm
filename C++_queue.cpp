@@ -18,6 +18,8 @@ using namespace std;
 #include<set>
 #include<vector>
 #include<string>
+#include<algorithm>
+#include<numeric>
 
 int main(int argc,char *argv[])
 {
@@ -44,6 +46,11 @@ int main(int argc,char *argv[])
     cout << "队列是否为空,0代表非空:" << Queue.empty() << endl;
     cout << "队列大小为:" << Queue.size() << endl;
 
+    //Queue.sort();
+    //Queue.reverse();
+    //auto res = find(Queue.begin(), Queue.end(),4);
+    //int sum  = accumulate(Queue.begin(), Queue.end(),0)
+
     //Queue.clear();  队列没有queue.clear()
 }
 
@@ -58,3 +65,4 @@ int main(int argc,char *argv[])
 队列是否为空,0代表非空:0
 队列大小为:7
  * /
+}
