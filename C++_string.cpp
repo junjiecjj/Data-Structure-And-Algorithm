@@ -4,6 +4,7 @@
 >> Mail: 2716705056qq.com
 >> Created Time: 2019.03.17
 ************************************************************************/
+
 #include<iostream>
 using namespace std;
 #include<string>
@@ -20,129 +21,171 @@ using namespace std;
 #include<algorithm>
 #include<numeric>
 
-void show(const vector<int> Vec)
+void Show(const string S)
 {
-    cout << "打印向量\n";
-    for(auto i: Vec)        //vector支持vector.begin()、vector.end()、vector.cbegin()、vector.cend()、vector.rbegin()、vector.rend()、vector.crbegin()、vector.crend()
+    auto it  = S.begin();
+    for(; it != S.end(); ++it)
     {
-        cout << i << "  ";
+        cout << *it << "  ";
     }
+    cout << endl;
+}
+
+void show(const string S)
+{
+    cout << S << endl;
     cout << "\n\n";
 }
 
 int main(int argc, char *argv[])
 {
-    //vector<int> vec = {1,2,3,4,5,6,7,8,9,10};
-    //vector<int> vec(10,1);
-    vector<int> vec;
-    for(int i = 0; i < 10; i++)
-        vec.push_back(i+1);
-    vec.push_back(20);
-    vec.push_back(19);
-    vec.push_back(14);
-    vec.push_back(13);
-    vec.push_back(12);
-    vec.push_back(18);
-    vec.push_back(17);
-    vec.push_back(16);
-    vec.push_back(22);
-    vec.push_back(15);
+    string S = "chen junjie!!!, hello";
+    cout << "字符串S的元素个数为:" << S.size() << endl;
+    cout << "字符串S的最大元素个数为:" << S.max_size() << endl;
 
-    show(vec);
-    //vec.push_front(i+1);                                          //vector<int>不支持push_front()
-    cout << "vector的容量大小为:" << vec.size() << endl;
-    cout << "vector的最大容量为:" << vec.max_size() << endl;
-    show(vec);
+    cout << "打印字符串\n";
+    cout << S << endl;
+    S.push_back('N');
+    S.push_back('P');
 
-    cout << "vector最后的元素为:" << vec.back() << endl;
-    cout << "删除vector最后的元素:" << endl;
-    vec.pop_back();
-    show(vec);
+    cout << "字符串不支持string.push_front\n" << endl;
+    //S.push_front('M');                        //string不支持string.push_front()
 
-    cout << "vector最后的元素为:" << vec.back() << endl;
-    cout << "删除vector最后的元素:" << endl;
-    vec.pop_back();
-    show(vec);
+    cout << "打印字符串\n";
+    cout << S << endl;
+    cout << "字符串最后的元素为:" << S.back() << endl;
+    cout << "字符串开始的元素为:" << S.front() << endl;
+    cout << "删除字符串S最后的元素:" << endl;
+    S.pop_back();
 
-    cout << "vector首部的元素为:" << vec.front() << endl;
-    cout << "不能用vec.pop_front()删除vector首部的元素:" << endl;
-    show(vec);
+    cout << "字符串不支持string.pop_front" << endl;
+    //S.pop_front()            //string不支持string.pop_front()
 
-    cout << "第三个元素为:" << vec.at(2) << endl;
-    cout << "第5个元素为:" << vec[4] << endl;
+    cout << "打印字符串\n";
+    show(S);
 
-    cout << "改变向量vec的第3个第5个元素"  << endl;
-    vec.at(2) = 33;
-    vec[4] = 99;
-    show(vec);
+    cout << "字符串第7个元素为:" << S.at(6) << endl;
+    cout << "字符串第8个元素为:" << S[7] << endl;
 
-    auto result = find(vec.cbegin(), vec.cend(), 7);
-    for(auto i = result; i != vec.end(); i++)
-        cout << *i << "  ";
+    cout << "通过S.at(n)和S[n]改变S" << endl;
+    S.at(7) = 'P';
+    cout << S << endl;
+
+    S[8] = 'Q';
+    cout << S << endl;
+
+    auto result = find(S.cbegin(), S.cend(), 'j');
+    for(auto i = result; i != S.end(); i++)
+        cout << *i;
     cout << endl;
-    cout << "找到 7 了:" << *result << endl;
+    cout << "找到 'j' 了:" << *result << endl;
 
-    cout << "反转并打印向量\n";
-    reverse(vec.begin(),vec.end());
-    show(vec);
+    cout << "反转并打印字符串\n";
+    reverse(S.begin(),S.end());
+    show(S);
 
-    cout << "排序并打印向量\n";
-    sort(vec.begin(),vec.end());
-    show(vec);
+    cout << "排序并打印队列\n";
+    sort(S.begin(),S.end());
+    show(S);
 
-    int sum  = accumulate(vec.cbegin(), vec.cend(), 0);
-    cout << "向量和为:" << sum << endl;
+    cout << "清空字符串" << endl;
+    S.clear();
+    cout << S << endl;
+    //cout << stoi(argv[1]) <<  endl;
+        
+    
+    
+    
+    
+    
+    string S1 = "chen&jun&jie, hello!!!";
+    string S2 = "I am fear@@@";
+    const char *cp = "wang yin ##!";
+    cout << "字符串S1:" << S1 <<endl;
+    cout << "字符串S2:" << S2 <<endl;
+    cout << "字符串cp:" << cp <<endl;
 
+    S1.insert(5,"dick , !");
+    cout << "字符串S1:" << S1 <<endl;
+    
+    S1.insert(5,S2,0,3);
+    cout << "字符串S1:" << S1 <<endl;
+    
 
+    S1.insert(5, cp, 6);
+    cout << "字符串S1:" << S1 <<endl;
 
-    cout << "清空向量" << endl;
-    vec.clear();
-    cout << "vector的容量大小为:" << vec.size() << endl;
+    S1.insert(5, cp);
+    cout << "字符串S1:" << S1 <<endl;
+
+    S1.insert(5, 3, '%');
+    cout << "字符串S1:" << S1 <<endl;
+
+    S1.replace(5, 3, "*****");
+    cout << "字符串S1:" << S1 <<endl;
+
+    S1.erase(5,3);
+    cout << "字符串S1:" << S1 <<endl;
+
+    int i = 1234.567 ;
+    cout << "int : i = " << i << endl;
+
+    string S3 = to_string(i);
+    cout << "string S3 = " << S3 << endl;
+
+    double d = stod(S3);
+    cout << "double d = " << d << endl;
+
     return 0;
-
 }
 /*
  输出为:
 
-打印向量
-1  2  3  4  5  6  7  8  9  10  20  19  14  13  12  18  17  16  22  15  
+字符串S的元素个数为:21
+字符串S的最大元素个数为:9223372036854775807
+打印字符串
+chen junjie!!!, hello
+字符串不支持string.push_front
 
-vector的容量大小为:20
-vector的最大容量为:4611686018427387903
-打印向量
-1  2  3  4  5  6  7  8  9  10  20  19  14  13  12  18  17  16  22  15  
+打印字符串
+chen junjie!!!, helloNP
+字符串最后的元素为:P
+字符串开始的元素为:c
+删除字符串S最后的元素:
+字符串不支持string.pop_front
+打印字符串
+chen junjie!!!, helloN
 
-vector最后的元素为:15
-删除vector最后的元素:
-打印向量
-1  2  3  4  5  6  7  8  9  10  20  19  14  13  12  18  17  16  22  
 
-vector最后的元素为:22
-删除vector最后的元素:
-打印向量
-1  2  3  4  5  6  7  8  9  10  20  19  14  13  12  18  17  16  
+字符串第7个元素为:u
+字符串第8个元素为:n
+通过S.at(n)和S[n]改变S
+chen juPjie!!!, helloN
+chen juPQie!!!, helloN
+juPQie!!!, helloN
+找到 'j' 了:j
+反转并打印字符串
+Nolleh ,!!!eiQPuj nehc
 
-vector首部的元素为:1
-不能用vec.pop_front()删除vector首部的元素:
-打印向量
-1  2  3  4  5  6  7  8  9  10  20  19  14  13  12  18  17  16  
 
-第三个元素为:3
-第5个元素为:5
-改变向量vec的第3个第5个元素
-打印向量
-1  2  33  4  99  6  7  8  9  10  20  19  14  13  12  18  17  16  
+排序并打印队列
+  !!!,NPQceeehhijllnou
 
-7  8  9  10  20  19  14  13  12  18  17  16  
-找到 7 了:7
-反转并打印向量
-打印向量
-16  17  18  12  13  14  19  20  10  9  8  7  6  99  4  33  2  1  
 
-排序并打印向量
-打印向量
-1  2  4  6  7  8  9  10  12  13  14  16  17  18  19  20  33  99  
+清空字符串
 
-向量和为:308
-清空向量
-vector的容量大小为:0*/
+字符串S1:chen&jun&jie, hello!!!
+字符串S2:I am fear@@@
+字符串cp:wang yin ##!
+字符串S1:chen&dick , !jun&jie, hello!!!
+字符串S1:chen&I adick , !jun&jie, hello!!!
+字符串S1:chen&wang yI adick , !jun&jie, hello!!!
+字符串S1:chen&wang yin ##!wang yI adick , !jun&jie, hello!!!
+字符串S1:chen&%%%wang yin ##!wang yI adick , !jun&jie, hello!!!
+字符串S1:chen&*****wang yin ##!wang yI adick , !jun&jie, hello!!!
+字符串S1:chen&**wang yin ##!wang yI adick , !jun&jie, hello!!!
+int : i = 1234
+string S3 = 1234
+double d = 1234
+
+ */
