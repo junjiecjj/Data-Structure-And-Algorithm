@@ -17,6 +17,8 @@ using namespace std;
 #include<vector>
 #include<map>
 #include<set>
+#include<algorithm>
+#include<numeric>
 
 
 //void show(const stack<int> stack1)
@@ -51,6 +53,12 @@ int main(int argc,char *argv[])
     cout << "删除栈顶元素";
     Stack.pop();
 
+    //Stack.sort();
+    //sort(Stack.begin(),Stack.end());
+    //find(Stack.begin(),Stack.end());
+    //accumulate(Stack.begin(),Stack.end(),0);
+    //Stack.reverse();
+    
     cout << Stack.top() << endl;
     Stack.pop();
 
