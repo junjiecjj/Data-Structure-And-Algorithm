@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
     cout << S << endl;
     //cout << stoi(argv[1]) <<  endl;
         
-        string S1 = "chen&jun&jie, hello!!!";
+    string S1 = "chen&jun&jie, hello!!!";
     string S2 = "I am fear@@@";
     const char *cp = "wang yin ##!";
     cout << "字符串S1:" << S1 <<endl;
@@ -149,13 +149,19 @@ int main(int argc, char *argv[])
     printf("sizeof(S4) = %zd , sizeof(S5) = %zd , sizeof(S6) = %zd , sizeof(S7) = %zd , sizeof(S8) = %zd, sizeof(S9) = %zd , sizeof(S10) = %zd , sizeof(S11) = %zd\n",
             sizeof(S4),sizeof(S5),sizeof(S6),sizeof(S7),sizeof(S8), sizeof(S9), sizeof(S10),sizeof(S11));
 
-    //cout << "strlen(S9) = " << strlen(S9) << endl;
+    //cout << "strlen(S9) = " << strlen(S9) << endl;         
+    //  strlen()只能以char *作为参数,不能以类型作为参数,该函数实际完成的功能是从代表该字符串的第一个地址开始遍历，直到遇到结束符'\0'。返回的长度大小不包括'\0'。
+    //  c/c++ strlen(str)和str.length()和str.size()都可以求字符串长度。
+    //  其中str.length()和str.size()是用于求string类对象长度的成员函数
+    //  strlen(str)是用于求字符数组的长度，其参数是char*
+
     cout << "S12.size() = " << S12.size() << endl;
     cout << "sizeof(S12) = " << sizeof(S12) << endl;
 
+    //cout << "strlen(S13) = " << strlen(S13) << endl;
     cout << "S13.size() = " << S13.size() << endl;
     cout << "sizeof(S13) = " << sizeof(S13) << endl;
-
+    return 0;
 
     return 0;
 }
