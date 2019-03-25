@@ -10,6 +10,17 @@ using namespace std;
 #include<cstdlib>
 #include<cstdbool>
 #include<queue>
+#include<stack>
+#include<vector>
+#include<deque>
+#include<array>
+#include<string>
+#include<list>
+#include<forward_list>
+#include<map>
+#include<utility>
+#include<set>
+
 #define MAXTREENODE  100
 
 
@@ -177,6 +188,72 @@ void PreOrderNoRecurse2(Node *Root)//先序遍历，非递归实现，版本二
     }
 }
 
+void PreOrderNoRecurse3(Node *Root, vector<int> &path)//先序遍历，非递归实现，版本三，利用C++中STL实现
+{
+    stack<Node *> Stack;
+    Node *ptr = Root;
+    while(ptr != NULL || !Stack.empty())
+    {
+        if(ptr != NULL)
+        {
+            path.push_back(ptr -> value);
+            Stack.push(ptr);
+            ptr = ptr -> left;
+        }
+        else
+        {
+            ptr = Stack.top();
+            Stack.pop();
+            ptr = ptr -> right;
+        }
+    }
+
+}
+
+void PreOrderNoRecurse4(Node *Root, vector<int> &path)//先序遍历，非递归实现，版本四，利用C++中STL实现
+{
+    stack<Node *> Stack;
+    Stack.push(Root);
+    while(!Stack.empty())
+    {
+        Root = Stack.top();
+        Stack.pop();
+        if(Root == NULL)
+            continue;
+        else
+        {
+            path.push_back(Root -> value);
+            Stack.push(Root -> right);
+            Stack.push(Root -> left);
+        }
+    }
+}
+
+void PreOrderNoRecurse5(Node *root, vector<int> &path)//先序遍历，非递归实现，版本四，利用C++中STL实现
+{
+    stack< pair<Node *, bool> > s;
+    s.push(make_pair(root, false));
+    bool visited;
+    while(!s.empty())
+    {
+        root = s.top().first;
+        visited = s.top().second;
+        s.pop();
+        if(root == NULL)
+            continue;
+        if(visited)
+        {
+            path.push_back(root -> value);
+        }
+        else
+        {
+            s.push(make_pair(root->right, false));
+            s.push(make_pair(root->left, false));
+            s.push(make_pair(root, true));
+        }
+    }
+}
+
 void InOrder(Node *node,void (*pfun)(int value))//中序遍历，递归实现
 {
     if(node != NULL)
@@ -234,7 +311,52 @@ void InOrderNORecurse2(Node *Root)//中序遍历,非递归实现,版本二,与�
     }
 }
 
+void InOrderNORecurse3(Node *Root,vector<int> &path)//中序遍历,非递归实现,版本三,利用C++中STL
+{
+    stack<Node *> Stack;
+    Node *ptr = Root;
+    while(ptr != NULL || !Stack.empty())
+    {
+        if(ptr != NULL)
+        {
+            Stack.push(ptr);
+            ptr = ptr -> left;
+        }
+        else
+        {
+            ptr = Stack.top();
+            path.push_back(ptr -> value);
+            Stack.pop();
+            ptr = ptr -> right;
+        }
+    }
+}
 
+//更简单的非递归中序遍历
+void InOrderNORecurse4(Node *root, vector<int> &path)//中序遍历,非递归实现,版本三,利用C++中STL
+{
+    stack< pair<Node *, bool> > s;
+    s.push(make_pair(root, false));
+    bool visited;
+    while(!s.empty())
+    {
+        root = s.top().first;
+        visited = s.top().second;
+        s.pop();
+        if(root == NULL)
+            continue;
+        if(visited)
+        {
+            path.push_back(root -> value);
+        }
+        else
+        {
+            s.push(make_pair(root->right, false));
+            s.push(make_pair(root, true));
+            s.push(make_pair(root->left, false));
+        }
+    }
+}
 void PostOrder(Node *node,void (*pfun)(int value))//后序遍历，递归实现
 {
     if(node != NULL)
@@ -311,7 +433,37 @@ void PostOrderNoRecurse2(Node *Root)//后续遍历，非递归实现，版本2
     }
     printf("\n\n");
 }
+void PostOrderNoRecurse3(Node *Root,vector<int> &path)//后续遍历，非递归实现，版本3,利用C++中STL实现
+{
 
+}
+
+
+//更简单的非递归后序遍历
+void PostOrderNoRecurse4(Node *root, vector<int> &path)//后续遍历，非递归实现，版本3,利用C++中STL实现
+{
+    stack< pair<Node *, bool> > s;
+    s.push(make_pair(root, false));
+    bool visited;
+    while(!s.empty())
+    {
+        root = s.top().first;
+        visited = s.top().second;
+        s.pop();
+        if(root == NULL)
+            continue;
+        if(visited)
+        {
+            path.push_back(root->value);
+        }
+        else
+        {
+            s.push(make_pair(root, true));
+            s.push(make_pair(root->right, false));
+            s.push(make_pair(root->left, false));
+        }
+    }
+}
 void LevelOrder1(Node *Root)//从上到下，从左到右，层次遍历,递归实现
 {
     queue<Node *> Queue;
@@ -446,6 +598,12 @@ bool IsBalanceTree(const Node *Root,int *depth)//判断是否是平衡二叉树
     return false;
 }
 
+void showPath(vector<int> path)
+{
+    for(auto i : path)
+        printf("%d  ",i);
+}
+
 int main(int argc, char *argv[])
 {
     int B;
@@ -469,17 +627,50 @@ int main(int argc, char *argv[])
     PreOrderNoRecurse2(mytree -> Root);
     printf("\n\n");
 
+    printf("非递归先序遍历3\n");
+    vector<int> path1;
+    PreOrderNoRecurse3(mytree -> Root, path1);
+    showPath(path1);
+    printf("\n\n");
+
+    printf("非递归先序遍历4\n");
+    vector<int> path2;
+    PreOrderNoRecurse4(mytree -> Root,path2);
+    showPath(path2);
+    printf("\n\n");
+
+    printf("非递归先序遍历5\n");
+    vector<int> path3;
+    PreOrderNoRecurse5(mytree -> Root,path3);
+    showPath(path3);
+    printf("\n\n");
+    printf("*************************************************************\n");
+
     printf("递归中序遍历\n");
     InOrder(mytree -> Root,&show);
     printf("\n\n");
 
-    printf("非递归递归中序遍历1\n");
+    printf("非递归中序遍历1\n");
     InOrderNORecurse1(mytree -> Root);
     printf("\n\n");
 
-    printf("非递归递归中序遍历2\n");
+    printf("非递归中序遍历2\n");
     InOrderNORecurse2(mytree -> Root);
     printf("\n\n");
+
+    printf("非递归中序遍历3\n");
+    vector<int> path4;
+    InOrderNORecurse3(mytree -> Root,path4);
+    showPath(path4);
+    printf("\n\n");
+
+    printf("非递归中序遍历4\n");
+    vector<int> path5;
+    InOrderNORecurse3(mytree -> Root,path5);
+    showPath(path5);
+    printf("\n\n");
+    printf("*************************************************************\n");
+
 
     printf("递归后序遍历\n");
     PostOrder(mytree -> Root,&show);
@@ -492,6 +683,19 @@ int main(int argc, char *argv[])
     printf("非递归递归后序遍历2\n");
     PostOrderNoRecurse2(mytree -> Root);
     printf("\n\n");
+
+    printf("非递归递归后序遍历3\n");
+    vector<int> path6;
+    PostOrderNoRecurse3(mytree -> Root,path6);
+    //showPath(path6);
+    printf("\n\n");
+
+    printf("非递归递归后序遍历4\n");
+    vector<int> path7;
+    PostOrderNoRecurse4(mytree -> Root,path7);
+    showPath(path7);
+    printf("\n\n");
+    printf("*************************************************************\n");
 
     printf("层次遍历:\n");
     LevelOrder1(mytree -> Root);
