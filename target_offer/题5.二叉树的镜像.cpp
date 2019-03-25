@@ -39,7 +39,7 @@ struct TreeNode {
 };
 class Solution {
 public:
-    void Mirror(TreeNode *pRoot){
+    void Mirror(TreeNode *pRoot){//递归版本
         if(pRoot == NULL)
             return;
         else
@@ -52,4 +52,8 @@ public:
             return;
         }
     }
+    void Mirror1(TreeNode *pRoot){//非递归版本
+
+    }
+
 };
