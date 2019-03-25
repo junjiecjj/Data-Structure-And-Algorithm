@@ -132,6 +132,11 @@ int main(int argc, char *argv[])
     double d = stod(S3);
     cout << "double d = " << d << endl;
 
+    double D = 12.1234;
+    string s14 = to_string(D);
+    cout << "D = " << D << endl;
+    cout << "s14 = " << s14 << endl;
+
     char S4[20] = "hello world";
     char S5[20] = {'h','e','l','l','o',' ','w','o','r','l','d','\0'};
     char S6[20] = {'h','e','l','l','o',' ','w','o','r','l','d'};
@@ -161,7 +166,6 @@ int main(int argc, char *argv[])
     //cout << "strlen(S13) = " << strlen(S13) << endl;
     cout << "S13.size() = " << S13.size() << endl;
     cout << "sizeof(S13) = " << sizeof(S13) << endl;
-    return 0;
 
     return 0;
 }
@@ -215,12 +219,13 @@ Nolleh ,!!!eiQPuj nehc
 int : i = 1234
 string S3 = 1234
 double d = 1234
+D = 12.1234
+s14 = 12.123400
 strlen(S4) = 11 , strlen(S5) = 11 , strlen(S6) = 11 , strlen(S7) = 5 , strlen(S8) = 5 , strlen(S9) = 5 , strlen(S10) = 16 , strlen(S11) = 11
 sizeof(S4) = 20 , sizeof(S5) = 20 , sizeof(S6) = 20 , sizeof(S7) = 13 , sizeof(S8) = 13, sizeof(S9) = 12 , sizeof(S10) = 11 , sizeof(S11) = 8
 S12.size() = 11
 sizeof(S12) = 32
 S13.size() = 11
 sizeof(S13) = 32
-
 
  */
