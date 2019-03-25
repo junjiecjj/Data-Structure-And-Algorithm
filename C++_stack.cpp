@@ -41,31 +41,33 @@ int main(int argc,char *argv[])
     {
         Stack.push(i);
     }
-    std::cout << "栈的大小" << Stack.size() << endl;
+    std::cout << "栈的大小:" << Stack.size() << endl;
     //cout << "栈的max_size:" << Stack.max_size() << endl;         //stack<T>没有.max_size成员
     cout << "栈顶元素:";
     cout << Stack.top() << endl;
-    cout << "删除栈顶元素";
+    cout << "删除栈顶元素" << endl;
     Stack.pop();
 
-    cout << "栈顶元素";
+    cout << "栈顶元素:" ;
     cout << Stack.top() << endl;
-    cout << "删除栈顶元素";
-    Stack.pop();
+    cout << "删除栈顶元素" << endl;
+    Stack.pop();                    //返回void
 
+    std::cout << "栈的元素数量:" << Stack.size() << endl;
     //Stack.sort();
     //sort(Stack.begin(),Stack.end());
     //find(Stack.begin(),Stack.end());
     //accumulate(Stack.begin(),Stack.end(),0);
     //Stack.reverse();
-    
+    cout << "栈顶元素:";
     cout << Stack.top() << endl;
+    cout << "删除栈顶元素" << endl;
     Stack.pop();
 
     //cout << "栈的第三个元素为:" << Stack[2] << endl;   栈不支持stack.at(n)和stack[n]
     
     cout << "栈是否为空,0为非空,1为空:" << Stack.empty() << endl;
-    std::cout << Stack.size() << endl;
+    std::cout << "栈的元素数量:" << Stack.size() << endl;
 
     //cout << "清空栈" << endl;
     //Stack.clear();                        //栈没有stack.clear()
@@ -76,10 +78,14 @@ int main(int argc,char *argv[])
 /*
 输出为:
 
-栈的大小9
+栈的大小:9
 栈顶元素:9
-删除栈顶元素栈顶元素8
-删除栈顶元素7
+删除栈顶元素
+栈顶元素:8
+删除栈顶元素
+栈的元素数量:7
+栈顶元素:7
+删除栈顶元素
 栈是否为空,0为非空,1为空:0
-6
- * /
+栈的元素数量:6
+*/
