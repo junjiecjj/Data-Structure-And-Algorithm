@@ -28,6 +28,7 @@
 #include<iostream>
 using namespace std;
 #include<deque>
+#include<stack>
 
 struct TreeNode {
 	int val;
@@ -53,7 +54,24 @@ public:
         }
     }
     void Mirror1(TreeNode *pRoot){//非递归版本
+        if(pRoot == NULL)
+            return;
+        stack<TreeNode *> Stack;
+        Stack.push(pRoot);
+        while(!Stack.empty())
+        {
+            TreeNode *node = Stack.top();
+            Stack.pop();
 
+            if(node != NULL)
+            {
+                TreeNode *tmp = node -> left;
+                node -> left = node -> right;
+                node -> right = tmp;
+                Stack.push(node -> left);
+                Stack.push(node -> right);
+            }
+        }
     }
 
 };
