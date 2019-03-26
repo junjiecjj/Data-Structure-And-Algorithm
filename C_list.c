@@ -467,7 +467,7 @@ vector<int> printListformTailtoHead1(List *list)//从尾到头打印链表,非�
     return result;
 }
 
-vector<int> printListformTailtoHead2(Node *pHead)//从尾到头打印链表,递归实现
+vector<int>  printListformTailtoHead2(Node *pHead)//从尾到头打印链表,递归实现，版本一
 {
     static vector<int> REsult;
     Node *pt = pHead;
@@ -478,6 +478,18 @@ vector<int> printListformTailtoHead2(Node *pHead)//从尾到头打印链表,递�
         REsult.push_back(pt -> value);
     }
     return REsult;
+}
+void  printListformTailtoHead3(Node *pHead,vector<int> &result)//从尾到头打印链表,递归实现，版本二
+{
+    //static vector<int> REsult;
+    Node *pt = pHead;
+    if(pt != NULL)
+    {
+        if(pt -> next != NULL)
+            printListformTailtoHead3(pt -> next,result);
+        result.push_back(pt -> value);
+    }
+    //return REsult;
 }
 
 
@@ -574,16 +586,26 @@ int main(int argc,char *argv[])
     Traverse(myList_copy,&showNode);
     Traverse(myList1,&showNode);
 
-    cout << "逆序打印链表,递归实现" << endl;
-    vector<int> REsult;
-    REsult = printListformTailtoHead2(MergeList);
-    for(auto i : REsult)
+    cout << "逆序打印链表,递归实现，版本1" << endl;
+    vector<int> REsult1;
+    REsult1 = printListformTailtoHead2(MergeList);
+    for(auto i : REsult1)
     {
         cout << i << "  ";
     }
     cout << endl;
+
+    cout << "逆序打印链表,递归实现，版本二" << endl;
+    vector<int> REsult2;
+    printListformTailtoHead3(MergeList,REsult2);
+    for(auto i : REsult2)
+    {
+        cout << i << "  ";
+    }
+    cout << endl;
+
 /*
-    printf("合并链表，递归实现\n");
+    printf("合并链表，递归实现，\n");
     Node *MergeList1 = MergeOrderList2(myList -> head, myList1 -> head);
     Traverse1(MergeList1,&showNode);
     cout << '\n';
@@ -605,6 +627,7 @@ int main(int argc,char *argv[])
 
 /*
 输出为:
+
 List has 8 nodes
 1  3  5  7  9  11  13  15
 
@@ -638,7 +661,9 @@ List has 8 nodes
 
 5  6  7  8  9  10  11  12  14  16
 2  4  5  6  7  8  9  10  11  12  14  16
-逆序打印链表,递归实现
+逆序打印链表,递归实现，版本一
+16  14  12  11  10  9  8  7  6  5  4  2
+逆序打印链表,递归实现,版本二
 16  14  12  11  10  9  8  7  6  5  4  2
 
 */
