@@ -514,7 +514,7 @@ int main(int argc,char *argv[])
     Traverse(myList,&showNode);
     cout << '\n';
 
-    Node *ptr1 = findKthTail2(myList -> head,3);
+    Node *ptr1 = findKthTail1(myList -> head,3);
     printf("倒数第三个节点为:%d\n",ptr1 -> value);
 
     Node *ptr2 = findKthTail2(myList -> head,3);
@@ -636,7 +636,7 @@ List has 8 nodes
 合并链表，非递归实现
 2  4  5  6  7  8  9  10  11  12  14  16
 
-5  6  7  8  9  10  11  12  14  16        //myList和myList1被改变了,为什么会这样?????
+5  6  7  8  9  10  11  12  14  16
 2  4  5  6  7  8  9  10  11  12  14  16
 逆序打印链表,递归实现
 16  14  12  11  10  9  8  7  6  5  4  2
