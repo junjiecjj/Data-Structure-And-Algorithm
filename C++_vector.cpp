@@ -63,6 +63,7 @@ int main(int argc, char *argv[])
     cout << "删除vector最后的元素:" << endl;
     vec.pop_back();
     show(vec);
+    cout << "向量是否为空,1为空，0为非空:" << vec.empty() << endl;
 
     cout << "vector首部的元素为:" << vec.front() << endl;
     cout << "不能用vec.pop_front()删除vector首部的元素:" << endl;
@@ -122,6 +123,7 @@ vector最后的元素为:22
 打印向量
 1  2  3  4  5  6  7  8  9  10  20  19  14  13  12  18  17  16  
 
+向量是否为空,1为空，0为非空:0
 vector首部的元素为:1
 不能用vec.pop_front()删除vector首部的元素:
 打印向量
@@ -145,4 +147,6 @@ vector首部的元素为:1
 
 向量和为:308
 清空向量
-vector的容量大小为:0*/
+vector的容量大小为:0
+
+*/
