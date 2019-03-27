@@ -75,7 +75,7 @@ int main(int argc,char *argv[])
     
     cout << "list1的大小为:" << list1.size() << endl;
     cout << "list1最大可保存的元素数量为:" << list1.max_size() << endl;
-    cout << "list1是否有元素:" << list1.empty() << endl;
+    cout << "list1是否为空，1为空，0为非空:" << list1.empty() << endl;
 
     cout << "打印链表\n";
     show1(list1);
@@ -124,7 +124,7 @@ int main(int argc,char *argv[])
 
 list1的大小为:21
 list1最大可保存的元素数量为:768614336404564650
-list1是否有元素:0
+list1是否为空，1为空，0为非空:0
 打印链表
 16  15  14  13  12  11  10  9  8  7  0  1  2  3  4  5  6  17  18  19  20  
 
@@ -151,5 +151,6 @@ list1是否有元素:0
 单项链表和为:140
 清空list1
 list1的大小为:0
+
 
 */
