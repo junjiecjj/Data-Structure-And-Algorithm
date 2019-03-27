@@ -53,6 +53,7 @@ int main(int argc, char *argv[])
 
     cout << "数组第四个元素为:" << Array.at(3) << endl;
     cout << "数组第六个元素为:" << Array[5] << endl;
+    cout << "数组是否为空,1为空，0为非空:" << Array.empty() << endl; 
 
     cout << "利用array.at(n)和arry[n]改变数组" << endl;
 
@@ -87,6 +88,7 @@ int main(int argc, char *argv[])
 /*
 输出为:
 
+
 打印数组
 18  20  13  4  21  16  7  8  11  32  10  12  100  65  10  33  76  1  
 
@@ -96,6 +98,7 @@ int main(int argc, char *argv[])
 数组首部的元素为:18
 数组第四个元素为:4
 数组第六个元素为:16
+数组是否为空,1为空，0为非空:0
 利用array.at(n)和arry[n]改变数组
 打印数组
 18  20  13  33  21  77  7  8  11  32  10  12  100  65  10  33  76  1  
@@ -113,5 +116,6 @@ int main(int argc, char *argv[])
 数组和为:547
 清空数组
 数组大小为:18
+
 
 */
