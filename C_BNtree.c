@@ -440,7 +440,7 @@ void PostOrderNoRecurse3(Node *Root,vector<int> &path)//后续遍历，非递归
 
 
 //更简单的非递归后序遍历
-void PostOrderNoRecurse4(Node *root, vector<int> &path)//后续遍历，非递归实现，版本3,利用C++中STL实现
+void PostOrderNoRecurse4(Node *root, vector<int> &path)//后续遍历，非递归实现，版本4,利用C++中STL实现
 {
     stack< pair<Node *, bool> > s;
     s.push(make_pair(root, false));
@@ -464,7 +464,7 @@ void PostOrderNoRecurse4(Node *root, vector<int> &path)//后续遍历，非递�
         }
     }
 }
-void LevelOrder1(Node *Root)//从上到下，从左到右，层次遍历,递归实现
+void LevelOrder1(Node *Root)//从上到下，从左到右，层次遍历,非递归实现
 {
     queue<Node *> Queue;
     if(Root == NULL)
@@ -486,10 +486,7 @@ void LevelOrder1(Node *Root)//从上到下，从左到右，层次遍历,递归�
     printf("\n\n");
 }
 
-void LevelOrder2(Node *Root)//从上到下，从左到右，层次遍历,非递归实现
-{
 
-}
 int getDeep(const Node *node)//得到树的深度,从根节点到叶节点的长度的最大值
 {
     if(node == NULL)
@@ -765,4 +762,5 @@ Tree size = 17
 10  6  14  3  8  12  16  1  4  7  9  11  13  15  17  21  20
 
 树深度为6
- */
+
+*/
