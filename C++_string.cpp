@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
     cout << "字符串第7个元素为:" << S.at(6) << endl;
     cout << "字符串第8个元素为:" << S[7] << endl;
-
+    cout << "字符串是否为空,1为空，0为非空:" << S.empty() << endl;
     cout << "通过S.at(n)和S[n]改变S" << endl;
     S.at(7) = 'P';
     cout << S << endl;
@@ -85,9 +85,13 @@ int main(int argc, char *argv[])
     reverse(S.begin(),S.end());
     show(S);
 
-    cout << "排序并打印队列\n";
+    cout << "排序并打印字符串\n";
     sort(S.begin(),S.end());
     show(S);
+
+    cout << "字符串求和\n";
+    int sum = accumulate(S.begin(),S.end(),0);
+    cout << "字符串和为:" << sum << endl;
 
     cout << "清空字符串" << endl;
     S.clear();
@@ -147,6 +151,8 @@ int main(int argc, char *argv[])
     const char *S11 = "hello world";
     string S12 = "hello world";
     string S13 = {'h','e','l','l','o',' ','w','o','r','l','d'};
+    string S14 = "hello\0world";
+    string S15 = {'h','e','l','l','o','\0','w','o','r','l','d'};
 
     printf("strlen(S4) = %zd , strlen(S5) = %zd , strlen(S6) = %zd , strlen(S7) = %zd , strlen(S8) = %zd , strlen(S9) = %zd , strlen(S10) = %zd , strlen(S11) = %zd\n",
             strlen(S4),strlen(S5),strlen(S6),strlen(S7),strlen(S8),strlen(S9), strlen(S10),strlen(S11));
@@ -154,24 +160,34 @@ int main(int argc, char *argv[])
     printf("sizeof(S4) = %zd , sizeof(S5) = %zd , sizeof(S6) = %zd , sizeof(S7) = %zd , sizeof(S8) = %zd, sizeof(S9) = %zd , sizeof(S10) = %zd , sizeof(S11) = %zd\n",
             sizeof(S4),sizeof(S5),sizeof(S6),sizeof(S7),sizeof(S8), sizeof(S9), sizeof(S10),sizeof(S11));
 
-    //cout << "strlen(S9) = " << strlen(S9) << endl;         
     //  strlen()只能以char *作为参数,不能以类型作为参数,该函数实际完成的功能是从代表该字符串的第一个地址开始遍历，直到遇到结束符'\0'。返回的长度大小不包括'\0'。
     //  c/c++ strlen(str)和str.length()和str.size()都可以求字符串长度。
     //  其中str.length()和str.size()是用于求string类对象长度的成员函数
     //  strlen(str)是用于求字符数组的长度，其参数是char*
 
+    //cout << "strlen(S12) = " << strlen(S12) << endl;         
     cout << "S12.size() = " << S12.size() << endl;
+    cout << "S12.length() = " << S12.length() << endl;
     cout << "sizeof(S12) = " << sizeof(S12) << endl;
 
     //cout << "strlen(S13) = " << strlen(S13) << endl;
     cout << "S13.size() = " << S13.size() << endl;
+    cout << "S13.length() = " << S13.length() << endl;
     cout << "sizeof(S13) = " << sizeof(S13) << endl;
 
+    //cout << "strlen(S14) = " << strlen(S14) << endl;         
+    cout << "S14.size() = " << S14.size() << endl;
+    cout << "S14.length() = " << S14.length() << endl;
+    cout << "sizeof(S14) = " << sizeof(S14) << endl;
+
+    //cout << "strlen(S15) = " << strlen(S15) << endl;
+    cout << "S15.size() = " << S15.size() << endl;
+    cout << "S15.length() = " << S15.length() << endl;
+    cout << "sizeof(S15) = " << sizeof(S15) << endl;
     return 0;
 }
 /*
  输出为:
-
 
 字符串S的元素个数为:21
 字符串S的最大元素个数为:9223372036854775807
@@ -191,6 +207,7 @@ chen junjie!!!, helloN
 
 字符串第7个元素为:u
 字符串第8个元素为:n
+字符串是否为空,1为空，0为非空:0
 通过S.at(n)和S[n]改变S
 chen juPjie!!!, helloN
 chen juPQie!!!, helloN
@@ -200,10 +217,12 @@ juPQie!!!, helloN
 Nolleh ,!!!eiQPuj nehc
 
 
-排序并打印队列
+排序并打印字符串
   !!!,NPQceeehhijllnou
 
 
+字符串求和
+字符串和为:1821
 清空字符串
 
 字符串S1:chen&jun&jie, hello!!!
@@ -224,8 +243,16 @@ s14 = 12.123400
 strlen(S4) = 11 , strlen(S5) = 11 , strlen(S6) = 11 , strlen(S7) = 5 , strlen(S8) = 5 , strlen(S9) = 5 , strlen(S10) = 16 , strlen(S11) = 11
 sizeof(S4) = 20 , sizeof(S5) = 20 , sizeof(S6) = 20 , sizeof(S7) = 13 , sizeof(S8) = 13, sizeof(S9) = 12 , sizeof(S10) = 11 , sizeof(S11) = 8
 S12.size() = 11
+S12.length() = 11
 sizeof(S12) = 32
 S13.size() = 11
+S13.length() = 11
 sizeof(S13) = 32
+S14.size() = 5
+S14.length() = 5
+sizeof(S14) = 32
+S15.size() = 11
+S15.length() = 11
+sizeof(S15) = 32
 
- */
+*/
