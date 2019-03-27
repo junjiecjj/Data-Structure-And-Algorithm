@@ -91,6 +91,7 @@ int main(int argc,char *argv[])
     Deque.at(7) = 99;
 
     show(Deque);
+    cout << "双端队列是否为空，1为空,0为非空:" << Deque.empty() << endl;
 
     auto result = find(Deque.cbegin(), Deque.cend(), 7);
     for(auto i = result; i != Deque.end(); i++)
@@ -139,6 +140,7 @@ int main(int argc,char *argv[])
 通过Deque.at(n)和Deque[n]改变Deque
 18  17  16  15  78  13  12  99  10  9  8  7  6  1  2  3  4  5  6  7  19  20  21  
 
+双端队列是否为空，1为空,0为非空:0
 7  6  1  2  3  4  5  6  7  19  20  21  
 找到 7 了:7
 反转并打印队列
@@ -149,6 +151,6 @@ int main(int argc,char *argv[])
 
 单项链表和为:396
 清空双端队列
-队列大小为:0
+队列大小为:
 
 */
