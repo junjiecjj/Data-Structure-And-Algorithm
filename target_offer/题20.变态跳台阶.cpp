@@ -11,10 +11,22 @@
 
 #include<iostream>
 using namespace std;
+#include<cmath>
 
 class Solution {
 public:
-    int jumpFloorII(int number) {
+    int jumpFloorII(int number)
+    {
+        int f0 = 0;
+        int f1 = 1;
+        int f2 = 2;
 
+        if(number == 0)
+            return f0;
+        else
+        {
+            int sum = pow(2, number-1);
+            return sum;
+        }
     }
 };
