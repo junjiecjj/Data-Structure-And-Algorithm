@@ -29,7 +29,7 @@ public:
             return NULL;
         ListNode *ptr1 = pListHead;
         ListNode *ptr2 = pListHead;
-        for(int i = 0; i < k; i++)
+        for(unsigned int i = 0; i < k; i++)
         {
             if(ptr1 != NULL)
                 ptr1 = ptr1 -> next;
