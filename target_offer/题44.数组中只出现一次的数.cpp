@@ -43,5 +43,31 @@ public:
             else *num2=*num2^data[i];
         }
     }
-     
+    void FindNumsAppearOnce(vector<int> data,int* num1,int *num2) {
+    int size=data.size();
+    map<int,int>mp;
+    for(int i=0;i<size;++i)
+    {
+        mp[data[i]]++;
+    }
+    map<int,int>::iterator it;
+    int m=0;
+    for(it=mp.begin();it!=mp.end();++it)
+    {
+        if(it->second==1)
+        {
+            if(m==0)
+            {
+                *num1=it->first;
+                ++m;
+            }
+            else
+            {
+                *num2=it->first;
+                break;
+            }
+              
+        }
+    }
+    }
 };
