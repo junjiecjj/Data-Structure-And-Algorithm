@@ -37,10 +37,22 @@ using namespace std;
 int main(int argc,char *argv[])
 {
     stack<int> Stack;
+    stack<int> Stack2;
     for(int i = 1; i < 10; i++)
     {
         Stack.push(i);
     }
+    Stack.push(21);
+    Stack.push(19);
+    Stack.push(18);
+
+    Stack2.push(11);
+    Stack2.push(12);
+    Stack2.push(13);
+    Stack2.push(14);
+    Stack2.push(15);
+
+    swap(Stack,Stack2);
     std::cout << "栈的大小:" << Stack.size() << endl;
     //cout << "栈的max_size:" << Stack.max_size() << endl;         //stack<T>没有.max_size成员
     cout << "栈顶元素:";
@@ -78,14 +90,16 @@ int main(int argc,char *argv[])
 /*
 输出为:
 
-栈的大小:9
-栈顶元素:9
+
+栈的大小:5
+栈顶元素:15
 删除栈顶元素
-栈顶元素:8
+栈顶元素:14
 删除栈顶元素
-栈的元素数量:7
-栈顶元素:7
+栈的元素数量:3
+栈顶元素:13
 删除栈顶元素
 栈是否为空,0为非空,1为空:0
-栈的元素数量:6
+栈的元素数量:2
+
 */
