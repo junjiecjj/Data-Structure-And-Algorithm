@@ -94,17 +94,29 @@ int main(int argc, char *argv[])
     printf("打印数组\n");
     showArray(m,n,A);
 
+    //重新读取这个数组
     out = fopen("./out4.txt","w");
     for(int i = 0; i < m; i++)
     {
         for(int j = 0; j < n; j++)
         {
-            fprintf(out, "%5d",A[i][j]);
+            fprintf(out, "%d  ",A[i][j]);//这里加两个空格,不然out4.txt各个数字之间每空格,无法阅读
         }
         putc('\n', out);
     }
     fclose(out);
 
+
+    in = fopen("./out4.txt","r");
+    for(int i = 0; i < m; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            fscanf(in, "%d",&A[i][j]);
+        }
+    }
+    fclose(in);
+    showArray(m,n, A);
     printf("\n**********************************************\n");
 
     //从array.txt读取数组
@@ -120,7 +132,7 @@ int main(int argc, char *argv[])
             fscanf(in, "%d",&B[i][j]);
         }
     }
-    fclose(out);
+    fclose(in);
     printf("打印读取后的数组\n");
     showArray(4,6,B);
 
