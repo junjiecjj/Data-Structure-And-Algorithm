@@ -106,7 +106,7 @@ void main(void)
 int a = 0; //全局初始化区
 
 char *p1; //   全局未初始化区
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     int b;               //   栈
     char s[] = "abc";    //   栈
