@@ -3,36 +3,66 @@
 >> Author: chenjunjie
 >> Mail: 2716705056qq.com
 >> Created Time: 2019.01.19
+插入排序是一种简单直观的排序算法。它的工作原理非常类似于我们抓扑克牌
+
+对于未排序数据 (右手抓到的牌)，在已排序序列 (左手已经排好序的手牌) 中从后向前扫描，找到相应位置并插入。
+
+插入排序在实现上，通常采用 in-place 排序（即只需用到 O (1) 的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。
+
+具体算法描述如下：
+
+从第一个元素开始，该元素可以认为已经被排序
+
+取出下一个元素，在已经排序的元素序列中从后向前扫描
+
+如果该元素（已排序）大于新元素，将该元素移到下一位置
+
+重复步骤 3，直到找到已排序的元素小于或者等于新元素的位置
+
+将新元素插入到该位置后
+
+重复步骤 2~5
+
+插入排序的代码如下：
+
+
 ************************************************************************/
 
-#include<stdio.h>
-void InsertionSort(int A[],int n)
+#include <stdio.h>
+// 分类 ------------- 内部比较排序
+// 数据结构 ---------- 数组
+// 最差时间复杂度 ---- 最坏情况为输入序列是降序排列的，此时时间复杂度 O (n^2)
+// 最优时间复杂度 ---- 最好情况为输入序列是升序排列的，此时时间复杂度 O (n)
+// 平均时间复杂度 ---- O (n^2)
+// 所需辅助空间 ------ O (1)
+// 稳定性 ------------ 稳定
+void InsertionSort(int A[], int n)
 {
-    for(int i=1; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
         int get = A[i];
-        int j = i-1;
-        while(j >= 0 && A[j] > get)
+        int j = i - 1;
+        while (j >= 0 && A[j] > get)
         {
-            A[j+1] = A[j];
+            A[j + 1] = A[j];
             j--;
         }
-        A[j+1] = get;
+        A[j + 1] = get;
     }
 }
 
-int main(int argc,char * argv[])
+int main(int argc, char *argv[])
 {
-    int A[] = {21,12,43,46,76,3,1,4,2,9,8,6,7,494};
-    int n = sizeof(A)/sizeof(int);
+    int A[] = {21, 12, 43, 46, 76, 3, 1, 4, 2, 9, 8, 6, 7, 494};
+    int n = sizeof(A) / sizeof(int);
     printf("排序前为:\n");
-    for(int i = 0; i < n; i++)
-        printf("%5d",A[i]);
+    for (int i = 0; i < n; i++)
+        printf("%5d", A[i]);
     printf("\n");
-    InsertionSort(A,n);
+    InsertionSort(A, n);
     printf("排序后为:\n");
-    for(int i = 0; i < n; i++)
-        printf("%5d",A[i]);
+    for (int i = 0; i < n; i++)
+        printf("%5d", A[i]);
     printf("\n");
     return 0;
 }
