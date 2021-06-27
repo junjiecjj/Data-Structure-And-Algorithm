@@ -1,11 +1,11 @@
 /*************************************************************************
->> File Name: C_Argc_argv.c
+>> File Name: C-bitField.c
 >> Author: 陈俊杰
 >> Mail: 2716705056qq.com
+ 
+>> Created Time: 2021年04月29日 星期四 14时05分17秒
 
->> Created Time: 2021年02月06日 星期六 19时22分05秒
->> Last Modified : 2021年03月25日 星期四 15时20分11秒
->> 此程序的功能是：
+>> 此程序的功能是：位字段
 ************************************************************************/
 
 #include<stdio.h>
@@ -14,7 +14,7 @@
 #include<limits.h>
 #include<math.h>
 #include<string.h>
-//#include<sys/socket.h>
+#include<sys/socket.h>
 #include<stddef.h>
 #include<locale.h>
 #include<time.h>
@@ -23,13 +23,7 @@
 
 int main(int argc, char *argv[])
 {
-    //dddddddddddddddd
-    int a = atoi(argv[1]);
-    printf("%d\n",a);
-    printf("***************分割线********************");
-    for (int i = 0; i < argc; ++i)
-    {
-        printf("%s\n",argv[i]);
-    }
+    printf("hello,%d,%d %d %d \n",12,23,
+            \ 32, 54);
     return 0;
 }

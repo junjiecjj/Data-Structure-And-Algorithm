@@ -3,8 +3,8 @@
 >> Author: chenjunjie
 >> Mail: 2716705056qq.com
 >> Created Time: 2019.01.22
-************************************************************************/
-/*
+
+>> Last Modified : 2021年03月25日 星期四 10时37分02秒
 这是以下结构的链表，只含有头结点和节点数的链表
 
 typedef struct List_Node
@@ -19,7 +19,8 @@ typedef struct LIST
     int num;
 }List;
 
- */
+*/
+
 #include <iostream>
 using namespace std;
 #include <cstdbool>
@@ -128,7 +129,9 @@ bool addFromEnd(List *list, int value)  //在链表尾部添加节点
 {
     Node *node = (Node *)malloc(sizeof(Node));
     Node *pr = list->head;
-    if (node == NULL) return false;
+    if (node == NULL)
+        //memory not enough
+        return false;
     node->value = value;
     node->next = NULL;
 

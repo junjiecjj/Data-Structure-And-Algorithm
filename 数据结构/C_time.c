@@ -2,9 +2,9 @@
 >> File Name: C_time.c
 >> Author: 陈俊杰
 >> Mail: 2716705056qq.com
- 
+ https://mp.weixin.qq.com/s/nbpVyJrzayqV32X8JFL3Rg
 >> Created Time: 2021年02月03日 星期三 19时44分53秒
->> Last Modified : 2021年02月03日 星期三 21时00分48秒
+>> Last Modified : 2021年03月17日 星期三 21时45分44秒
 >> 此程序的功能是：时间操作函数在实际项目开发中会经常用到，最近做项目也正好用到就正好顺便整理一下。
 
 ------------                                                                        ---------------
@@ -43,7 +43,7 @@
                             -------------------------------------------------------
                                                /|\
                                                 |
-                                                |
+                                                |time()
                                                 |
                                                 |
                                               kernel
@@ -86,8 +86,8 @@ struct tm{
 说明：将参数timep所指的time_t结构中的信息转换成真实世界所使用的时间日期表示方法，然后将结果由结构tm返回。此函数返回的时间日期未经时区转换，而是UTC时间。
 
 4、 strftime函数
-#include <time.h> 
-定义：  
+#include <time.h>
+定义：
 size_t strftime(char *s, size_t max, const char *format,const struct tm *tm);
 说明：
 类似于snprintf函数，我们可以根据format指向的格式字符串，将struct tm结构体中信息输出到s指针指向的字符串中，最多为max个字节。当然s指针指向的地址需提前分配空间，比如字符数组或者malloc开辟的堆空间。
@@ -139,8 +139,8 @@ char *asctime(const struct tm *timeptr);
 返回值：
  返回的也是UTC时间。
 
-6、 localhost函数
-struct tm *localhost(const time_t *timep);
+6、 localtime函数
+struct tm *localtime(const time_t *timep);
 取得当地目前的时间和日期
 
 
@@ -175,7 +175,7 @@ struct timezone{
 #include<limits.h>
 #include<math.h>
 #include<string.h>
-#include<sys/socket.h>
+//#include<sys/socket.h>
 #include<stddef.h>
 #include<locale.h>
 #include<time.h>
@@ -184,15 +184,33 @@ struct timezone{
 
 #define BUFLEN 255
 
-/* struct timeval{ */
-/*     long tv_sec; // 秒 */
-/*     long tv_usec;  // 微秒 */
-/* }; */
+struct timeval{
+    long tv_sec; // 秒 */
+    long tv_usec;  // 微秒 */
+};
 
 struct timezone{
     int tz_minuteswest; // 和greenwich时间差了多少分钟
     int tz_dsttime; // 日光节约时间的状态
 };
+
+
+char Time[255];
+
+char * GetTimeOfNow()
+{
+    char *Wday[] = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+    time_t Timep;
+    struct tm *P;
+    //char Time[255];
+    time(&Timep);
+    P = localtime(&Timep);
+    //printf("%d/%d/%d ",(1900+P->tm_year),(1+P->tm_mon),P->tm_mday);
+    //printf("%s %d:%d:%d\n",Wday[P->tm_wday],P->tm_hour,P->tm_min,P->tm_sec);
+    sprintf(Time, "%d/%d/%d %s %d:%d:%d\n",(1900+P->tm_year), (1+P->tm_mon), P->tm_mday, Wday[P->tm_wday], P->tm_hour, P->tm_min, P->tm_sec);
+    //printf("%s\n",Time);
+    return Time;
+}
 
 int main(int argc, char *argv[])
 {
@@ -206,7 +224,7 @@ int main(int argc, char *argv[])
    //-----------------2、ctime()函数----------------------------------------------
    // time_t timep;
 
-    time(&timep);
+    //time(&timep);
     printf("---------2、ctime()函数--------------\n");
     printf("%s\n",ctime(&timep));
 
@@ -242,7 +260,7 @@ int main(int argc, char *argv[])
     /* time_t timep; */
     /* struct tm *p; */
 
-    time(&timep);
+    //time(&timep);
     p = localtime(&timep);
     printf("---------6、localtime()函数--------------\n");
     printf("%d/%d/%d ",(1900+p->tm_year),(1+p->tm_mon),p->tm_mday);
@@ -251,7 +269,7 @@ int main(int argc, char *argv[])
 
 
    //-----------------7、mktime()函数----------------------------------------------
-    time(&timep);
+    //time(&timep);
     printf("---------7、mktime()函数--------------\n");
     printf("time():%ld\n",timep);
     p = localtime(&timep);
@@ -263,12 +281,17 @@ int main(int argc, char *argv[])
     struct timeval tv;
     struct timezone tz;
     gettimeofday(&tv,&tz);
-    printf("---------7、mktime()函数--------------\n");
+    printf("---------8、mktime()函数--------------\n");
     printf("tv_sec :%d\n",tv.tv_sec);
     printf("tv_usec: %d\n",tv.tv_usec);
     printf("tz_minuteswest:%d\n",tz.tz_minuteswest);
     printf("tz_dsttime:%d\n",tz.tz_dsttime);
 
 
+    //-----------------9、GetTimeOfDay()函数----------------------------------------------
+    printf("----------------9、GetTimeOfNow() 函数------------------------\n");
+
+    printf("%s\n", GetTimeOfNow());
+    printf("%s\n", Time);
     return 0;
 }

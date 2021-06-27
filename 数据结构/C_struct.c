@@ -4,7 +4,9 @@
 >> Mail: 2716705056qq.com
 >> Created Time: 2021年01月10日 星期日 00时40分10秒
 >> 此程序的功能是：
-************************************************************************/
+>> Last Modified : 2021年03月10日 星期三 11时10分03秒
+
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,15 +14,15 @@
 #include <limits.h>
 #include <math.h>
 #include <string.h>
-#include <sys/socket.h>
+//#include <sys/socket.h>
 #include <stddef.h>
 #include <locale.h>
 #include <time.h>
 #include <complex.h>
 
 char *s_gets(char *st, int n);
-#define MAXTITL 41 /* maximum length of title + 1         */
-#define MAXAUTL 31 /* maximum length of author's name + 1 */
+#define MAXTITL 41
+#define MAXAUTL 31
 #define MAXBKS 100
 #define LEN 20
 #define FUNDLEN 50
@@ -33,17 +35,20 @@ typedef struct funds
     char save[FUNDLEN];
     double savefund;
 } FUND;
+
 typedef struct names
 { // first structure
     char first[LEN];
     char last[LEN];
 } NAME;
+
 typedef struct namect
 {
     char *fname; // using pointers
     char *lname;
     int letters;
 } NAMES;
+
 typedef struct guy
 {
     struct names handle;
@@ -58,6 +63,32 @@ typedef struct book
     char author[MAXAUTL];
     float price;
 } BOOK;
+
+typedef struct STRUCT1
+{
+    int a ;
+    double b;
+    float c;
+    unsigned char d;
+    int e;
+    int f;
+} STR1;
+
+
+typedef struct STRUCT2
+{
+    int a ;
+    double b;
+    float c;
+    unsigned char d;
+    //int e;
+    //int f;
+} STR2;
+
+void showstr(STR2 *p)
+{
+    printf("a = %d, b = %lf, c = %f, d = %hhu, \n",p->a,p->b,p->c,p->d);
+}
 
 char *s_gets(char *st, int n)
 {
@@ -121,20 +152,18 @@ void cleanup(struct namect *pst)
 int main(int argc, char *argv[])
 {
     BOOK library; /* declare library as a book variable  */
-    printf("*************************简单示例************************.\n");
+    printf("*************************简单示例  1************************.\n");
     printf("Please enter the book title.\n");
     s_gets(library.title, MAXTITL); /* access to the title portion         */
     printf("Now enter the author.\n");
     s_gets(library.author, MAXAUTL);
     printf("Now enter the value.\n");
     scanf("%f", &library.price);
-    printf("%s by %s: $%.2f\n", library.title,
-           library.author, library.price);
-    printf("%s: \"%s\" ($%.2f)\n", library.author,
-           library.title, library.price);
+    printf("%s by %s: $%.2f\n", library.title, library.author, library.price);
+    printf("%s: \"%s\" ($%.2f)\n", library.author, library.title, library.price);
     printf("Done.\n");
 
-    printf("*************************指定初始化器************************.\n");
+    printf("*************************指定初始化器  2************************.\n");
     BOOK gift =
         {
             .price = 29.99,
@@ -142,7 +171,7 @@ int main(int argc, char *argv[])
             .title = "one dream"};
 
     printf("%s: \"%s\" ($%.2f)\n", gift.author, gift.title, gift.price);
-    printf("*************************结构数组************************.\n");
+    printf("*************************结构数组  3************************.\n");
     BOOK librarys[MAXBKS]; /* array of book structures */
     int count = 0;
     int index;
@@ -168,7 +197,7 @@ int main(int argc, char *argv[])
             printf("%s by %s: $%.2f\n", librarys[index].title,
                    librarys[index].author, librarys[index].price);
     }
-    printf("*************************结构指针************************.\n");
+    printf("*************************结构指针  4************************.\n");
     struct guy fellow[2] = {
         {{"Ewen", "Villard"},
          "grilled salmon",
@@ -189,7 +218,7 @@ int main(int argc, char *argv[])
     printf("him->favfood is %s:  him->handle.last is %s\n",
            him->favfood, him->handle.last);
 
-    printf("*************************传递结构的地址************************.\n");
+    printf("*************************传递结构的地址  5************************.\n");
     FUND stan = {
         "Garlic-Melon Bank",
         4032.27,
@@ -214,7 +243,7 @@ int main(int argc, char *argv[])
 
     printf("Stan1 has a total of $%.2f.\n", sum1(stan1));
 
-    printf("************************** 结构、指针和malloc()************************\n");
+    printf("************************** 结构、指针和malloc()  6************************\n");
     NAMES persoN;
 
     getinfo(&persoN);
@@ -222,7 +251,7 @@ int main(int argc, char *argv[])
     showinfo(&persoN);
     cleanup(&persoN);
 
-    printf("*************************把结构内容保存到文件中**********************\n");
+    printf("*************************把结构内容保存到文件中  7**********************\n");
 
     BOOK Library[MAXBKS];
     count = 0;
@@ -232,7 +261,7 @@ int main(int argc, char *argv[])
 
     if ((pbooks = fopen("book.dat", "a+b")) == NULL)
     {
-        fputs("无法打开 book.dat 文件...\n", stderr);
+        fputs("can not open book.dat file...\n", stderr);
         exit(1);
     }
 
@@ -251,33 +280,46 @@ int main(int argc, char *argv[])
         exit(2);
     }
 
-    puts("请输入书名：\n");
-    puts("输入Enter以结束：\n");
+    puts("please enter the book name：\n");
+    puts(" Enter to  end：\n");
     while (count < MAXBKS && s_gets(Library[count].title, MAXTITL) != NULL && Library[count].title[0] != '\0')
     {
-        puts("请输入作者：\n");
+        puts("please enter the author：\n");
         s_gets(Library[count].author, MAXAUTL);
-        puts("请输入价格：\n");
+        puts("please enter the price：\n");
         scanf("%f", &Library[count++].price);
         while (getchar() != '\n')
             continue; /* clear input line  */
         if (count < MAXBKS)
-            puts("请输入下一个书名：\n");
+            puts("please enter the next book：\n");
     }
 
     if (count > 0)
     {
-        puts("以下是你输入的书籍信息：");
+        puts("here are the book you input：");
         for (index = 0; index < count; index++)
             printf("%s by %s: $%.2f\n", Library[index].title, Library[index].author, Library[index].price);
         fwrite(&Library[filecount], sizeof(BOOK), count - filecount, pbooks);
     }
     else
-        puts("没书吗？太糟糕了.\n");
+        puts("no book ？terrible.\n");
 
     puts("Bye.......\n");
     fclose(pbooks);
 
-    printf("************************结束*************************.\n");
+    printf("*************************结构体错位赋值  8**********************\n");
+    STR1 s1;
+    //STR1 *p1 = &s1;
+    STR2 *p2;
+    s1.a = 1;
+    s1.b = 12.12;
+    s1.c = 13.13;
+    s1.d = 2;
+    s1.e = 3;
+    s1.f = 4;
+
+    p2 = (STR2 *) &s1;
+    showstr(p2);
+    printf("************************ end *************************.\n");
     return 0;
 }

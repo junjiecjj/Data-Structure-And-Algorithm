@@ -20,18 +20,18 @@ char *str = new char(100);
 （3）指针操作超越了变量的作用范围。这种情况让人防不胜防，示例程序如下：
 class A
 {
- public:
-void Func(void){ cout << “Func of class A” << endl; }
+    public:
+    void Func(void){ cout << “Func of class A” << endl; }
 };
 void Test(void)
 {
- A *p;
- if(...)
- {
-A a;
-p = &a; // 注意 a 的生命期
- }
- p->Func(); // p是“野指针”
+    A *p;
+    if(...)
+    {
+        A a;
+        p = &a; // 注意 a 的生命期
+    }
+    p->Func(); // p是“野指针”
 }
 如何避免野指针：
 一、对指针进行初始化

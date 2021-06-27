@@ -12,7 +12,7 @@
 #include <limits.h>
 #include <math.h>
 #include <string.h>
-#include <sys/socket.h>
+//#include <sys/socket.h>
 #include <stddef.h>
 #include <locale.h>
 #include <time.h>

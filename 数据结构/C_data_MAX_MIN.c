@@ -1,4 +1,4 @@
-******************
+/*************************************************************************
 >> File Name: 换钱的最小货币数.c
 >> Author: 陈俊杰
 >> Mail: 2716705056qq.com
@@ -24,129 +24,143 @@
 
 void MAX_MIN() //此函数是自动显示C语言中基本数据类型的最大值最小值和字节数
 {
-	printf("**********************字符和整型***********************\n");
+	printf("**********************char & int***********************\n");
 	printf("char的位数:%d\n", CHAR_BIT);
-	char A;
-	printf("sizeof(char) = %lu\n\n", sizeof(A));
+    printf("char 类型所能表示的最小值:%d\n", CHAR_MIN);
+	printf("char 类型所能表示的最大值:%d\n", CHAR_MAX);
+	printf("一个多字节字符最多能包含多少个字节:%d\n", MB_LEN_MAX);
+	printf("sizeof(char) = %lu\n\n", sizeof(char));
 
 	printf("signed char 类型所能表示的最小值:%d\n", SCHAR_MIN);
 	printf("signed char 类型所能表示的最大值:%d\n", SCHAR_MAX);
-	signed char B;
-	printf("sizeof(signed char) = %lu\n\n", sizeof(B));
+	printf("sizeof(signed char) = %lu\n\n", sizeof(signed char));
 
 	printf("unsigned char 类型所能表示的最大值:%d\n", UCHAR_MAX);
-	unsigned char C;
-	printf("sizeof(unsigned char) = %lu\n\n", sizeof(C));
+	printf("sizeof(unsigned char) = %lu\n\n", sizeof(unsigned char));
 
-	printf("char 类型所能表示的最小值:%d\n", CHAR_MIN);
-	printf("char 类型所能表示的最大值:%d\n", CHAR_MAX);
-	printf("一个多字节字符最多能包含多少个字节:%d\n", MB_LEN_MAX);
+
 
 	printf("short int 类型所能表示的最小值:%d\n", SHRT_MIN);
 	printf("short int 类型所能表示的最大值:%d\n", SHRT_MAX);
-	short int D;
-	printf("sizeof(short int) = %lu\n\n", sizeof(D));
+	printf("sizeof(short int) = %lu\n\n", sizeof(short int));
 
 	printf("unsigned short int 类型所能表示的最大值:%d\n", USHRT_MAX);
-	unsigned short int E;
-	printf("sizeof(unsigned short int) = %lu\n\n", sizeof(E));
+	printf("sizeof(unsigned short int) = %lu\n\n", sizeof(unsigned short int));
 
 	printf("int 类型所能表示的最小值:%d\n", INT_MIN);
 	printf("int 类型所能表示的最大值:%d\n", INT_MAX);
-	int F;
-	printf("sizeof(int) = %lu\n\n", sizeof(F));
+	printf("sizeof(int) = %lu\n\n", sizeof(int));
 
 	printf("unsigned int 类型所能表示的最大值:%u\n", UINT_MAX);
-	unsigned int G;
-	printf("sizeof(unsigned int) = %lu\n\n", sizeof(G));
+	printf("sizeof(unsigned int) = %lu\n\n", sizeof(unsigned int));
 
 	printf("long int 类型所能表示的最小值:%ld\n", LONG_MIN);
 	printf("long int 类型所能表示的最大值:%ld\n", LONG_MAX);
-	long int H;
-	printf("sizeof(long int) = %lu\n\n", sizeof(H));
+	printf("sizeof(long int) = %lu\n\n", sizeof(long int));
 
 	printf("unsigned long int 类型所能表示的最大值:%lu\n", ULONG_MAX);
-	unsigned long int I;
-	printf("sizeof(unsigned long int) = %lu\n\n", sizeof(I));
+	printf("sizeof(unsigned long int) = %lu\n\n", sizeof(unsigned long int));
 
 	printf("long long int 类型所能表示的最小值:%lld\n", LLONG_MIN);
 	printf("long long int 类型所能表示的最大值:%lld\n", LLONG_MAX);
-	long long int J;
-	printf("sizeof(long long int) = %lu\n\n", sizeof(J));
+	printf("sizeof(long long int) = %lu\n\n", sizeof(long long int));
 
 	printf("unsigned long long int 类型所能表示的最大值:%llu\n", ULLONG_MAX);
-	unsigned long long int K;
-	printf("sizeof(unsigned long long int) = %lu\n\n", sizeof(K));
+	printf("sizeof(unsigned long long int) = %lu\n\n", sizeof(unsigned long long int));
 
-	printf("**********************浮点数***********************\n");
+	printf("转换成十进制形式后，规格化char 的最大值（为正数）:%d\n", CHAR_MAX);
+	printf("转换成十进制形式后，规格化char 的最小值（为正数）:%d\n\n", CHAR_MIN);
+
+	printf("转换成十进制形式后，规格化short int 的最大值（为正数）:%d\n", SHRT_MAX);
+	printf("转换成十进制形式后，规格化short int 的最小值（为正数）:%d\n\n", SHRT_MIN);
+
+	printf("转换成十进制形式后，规格化long long int 的最大值（为正数）:%lld\n", LLONG_MAX);
+	printf("转换成十进制形式后，规格化long long int 的最大值（为正数）:%lld\n\n", LLONG_MAX);
+
+	printf("转换成十进制形式后，规格化 long int 的最大值（为正数）:%d\n", LONG_MAX);
+	printf("转换成十进制形式后，规格化 long int 的最小值（为正数）:%d\n\n", LONG_MIN);
+
+	printf("转换成十进制形式后，规格化unsigned char 的最大值（为正数）:%d\n\n", UCHAR_MAX);
+	//printf("转换成十进制形式后，规格化unsigned char 的最小值（为正数）:%d\n", UCHAR_MIN);
+
+	printf("转换成十进制形式后，规格化unsigned short 的最大值（为正数）:%d\n\n", USHRT_MAX);
+	//printf("转换成十进制形式后，规格化unsigned short 的最小值（为正数）:%d\n", USHRT_MIN);
+
+	printf("转换成十进制形式后，规格化unsigned int 的最大值（为正数）:%u\n\n", UINT_MAX);
+	//printf("转换成十进制形式后，规格化unsigned int 的最小值（为正数）:%d\n", UINT_MIN);
+
+	printf("转换成十进制形式后，规格化unsigned long 的最大值（为正数）:%lu\n\n", ULONG_MAX);
+	//printf("转换成十进制形式后，规格化unsigned long 的最小值（为正数）:%d\n", ULONG_MIN);
+
+	printf("转换成十进制形式后，规格化unsigned long long 的最大值（为正数）:%llu\n\n", ULLONG_MAX);
+	//printf("转换成十进制形式后，规格化unsigned long long 的最小值（为正数）:%d\n", ULLONG_MIN);
+
+	printf("**********************float & double ***********************\n");
 	/*
 	flt = (-1)^sign × mantissa × base^exponent
 	对各个部分的说明：
 	flt 是要表示的浮点数。
 	sign 用来表示 flt 的正负号，它的取值只能是 0 或 1：取值为 0 表示 flt 是正数，取值为 1 表示 flt 是负数。
-	base 是基数，或者说进制，它的取值大于等于 2（例如，2 表示二进制、10 表示十进制、16 表示十六进制……）。数学中常见的科学计数法是基于十进制的，例如 6.93 × 1013；计算机中的科学计数法可以基于其它进制，例如 1.001 × 27 就是基于二进制的，它等价于 1001 0000。
+	base 是基数，或者说进制，它的取值大于等于 2（例如，2 表示二进制、10 表示十进制、16 表示十六进制……）。数学中常见的科学计数法是基于十进制的，例如 6.93 × 1013；计算机中的科学计数法可以基于其它进制，例如 1.001 × 2^7 就是基于二进制的，它等价于 1001 0000。
 	mantissa 为尾数，或者说精度，是 base 进制的小数，并且 1 ≤ mantissa ＜ base，这意味着，小数点前面只能有一位数字；
 	exponent 为指数，是一个整数，可正可负，并且为了直观一般采用十进制表示。
 	*/
 	printf("flt = (-1)^sign × mantissa × base^exponent\n");
 
 	printf("基数或者进制数，上面的base:%d\n", FLT_RADIX);
-	printf("浮点数的舍入模式:%d\n", FLT_ROUNDS);
+	printf("浮点数的舍入模式:%d\n\n", FLT_ROUNDS);
+
 	printf("基数（进制）为 FLT_RADIX 时，float 尾数 mantissa 的最大长度（最大位数），也可以说是浮点数的精度:%d\n", FLT_MANT_DIG);
-	printf("基数（进制）为 FLT_RADIX 时，double 尾数 mantissa 的最大长度（最大位数），也可以说是浮点数的精度:%d\n", DBL_MANT_DIG);
-	printf("基数（进制）为 FLT_RADIX 时，long double 尾数 mantissa 的最大长度（最大位数），也可以说是浮点数的精度:%d\n\n", LDBL_MANT_DIG);
-
-	printf("float 转换成十进制形式后，小数点后精确数字（能够保证精度的数字）的位数:%d\n", FLT_DIG);
-	printf("double 转换成十进制形式后，小数点后精确数字（能够保证精度的数字）的位数:%d\n", DBL_DIG);
-	printf("long float 转换成十进制形式后，小数点后精确数字（能够保证精度的数字）的位数:%d\n\n", LDBL_DIG);
-
-	printf("基数（进制）为 FLT_RADIX 时，规格化float浮点数的指数（也即 exponent）的最小值（为负数）:%d\n", FLT_MIN_EXP);
-	printf("基数（进制）为 FLT_RADIX 时，规格化double浮点数的指数（也即 exponent）的最小值（为负数）:%d\n", DBL_MIN_EXP);
-	printf("基数（进制）为 FLT_RADIX 时，规格化long double浮点数的指数（也即 exponent）的最小值（为负数）:%d\n\n", LDBL_MIN_EXP);
-
-	printf("转换成十进制形式后，规格化float浮点数的指数的最小值（为负数）:%d\n", FLT_MIN_10_EXP);
-	printf("转换成十进制形式后，规格化double浮点数的指数的最小值（为负数）:%d\n", DBL_MIN_10_EXP);
-	printf("转换成十进制形式后，规格化long double浮点数的指数的最小值（为负数）:%d\n\n", LDBL_MIN_10_EXP);
-
-	printf("基数（进制）为 FLT_RADIX 时，规格化float浮点数的指数（也即 exponent）的最大值（为正数）:%d\n", FLT_MAX_EXP);
-	printf("基数（进制）为 FLT_RADIX 时，规格化double浮点数的指数（也即 exponent）的最大值（为正数）:%d\n", DBL_MAX_EXP);
-	printf("基数（进制）为 FLT_RADIX 时，规格化long float浮点数的指数（也即 exponent）的最大值（为正数）:%d\n\n", LDBL_MAX_EXP);
-
-	printf("转换成十进制形式后，规格化float浮点数的指数的最大值（为正数）:%d\n", FLT_MAX_10_EXP);
-	printf("转换成十进制形式后，规格化double浮点数的指数的最大值（为正数）:%d\n", DBL_MAX_10_EXP);
-	printf("转换成十进制形式后，规格化long double浮点数的指数的最大值（为正数）:%d\n\n", LDBL_MAX_10_EXP);
-
+    printf("基数（进制）为 FLT_RADIX 时，规格化float浮点数的指数（也即 exponent）的最小值（为负数）:%d\n", FLT_MIN_EXP);
+    printf("基数（进制）为 FLT_RADIX 时，规格化float浮点数的指数（也即 exponent）的最大值（为正数）:%d\n", FLT_MAX_EXP);
+    printf("float 转换成十进制形式后，小数点后精确数字（能够保证精度的数字）的位数:%d\n", FLT_DIG);
+    printf("转换成十进制形式后，规格化float浮点数的指数的最小值（为负数）:%d\n", FLT_MIN_10_EXP);
+    printf("转换成十进制形式后，规格化float浮点数的指数的最大值（为正数）:%d\n", FLT_MAX_10_EXP);
 	printf("float最大的有效浮点数的值（为正数），也即浮点数的最大值:%f\n", FLT_MAX);
 	printf("float最大的有效浮点数的值（为正数），也即浮点数的最大值:%e\n", FLT_MAX);
+    printf("float最小的有效浮点数的值（为正数），也即浮点数的最小值:%.30f\n", FLT_MIN);
+    printf("float最小的有效浮点数的值（为正数），也即浮点数的最小值:%.20e\n", FLT_MIN);
+    printf("float 的 1 和大于 1 的最小浮点数之间的差值:%.30f\n", FLT_EPSILON);
+    printf("float 的 1 和大于 1 的最小浮点数之间的差值:%.20e\n\n", FLT_EPSILON);
+
+
+	printf("基数（进制）为 FLT_RADIX 时，double 尾数 mantissa 的最大长度（最大位数），也可以说是浮点数的精度:%d\n", DBL_MANT_DIG);
+    printf("基数（进制）为 FLT_RADIX 时，规格化double浮点数的指数（也即 exponent）的最小值（为负数）:%d\n", DBL_MIN_EXP);
+    printf("基数（进制）为 FLT_RADIX 时，规格化double浮点数的指数（也即 exponent）的最大值（为正数）:%d\n", DBL_MAX_EXP);
+    printf("double 转换成十进制形式后，小数点后精确数字（能够保证精度的数字）的位数:%d\n", DBL_DIG);
+    printf("转换成十进制形式后，规格化double浮点数的指数的最小值（为负数）:%d\n", DBL_MIN_10_EXP);
+    printf("转换成十进制形式后，规格化double浮点数的指数的最大值（为正数）:%d\n", DBL_MAX_10_EXP);
 	printf("double最大的有效浮点数的值（为正数），也即浮点数的最大值:%f\n", DBL_MAX);
 	printf("double最大的有效浮点数的值（为正数），也即浮点数的最大值:%e\n", DBL_MAX);
-	printf("long double最大的有效浮点数的值（为正数），也即浮点数的最大值:%Lf\n\n", LDBL_MAX);
-	printf("long double最大的有效浮点数的值（为正数），也即浮点数的最大值:%LE\n\n", LDBL_MAX);
+    printf("double最小的有效浮点数的值（为正数），也即浮点数的最小值:%.30f\n", DBL_MIN);
+    printf("double最小的有效浮点数的值（为正数），也即浮点数的最小值:%.20e\n", DBL_MIN);
+    printf("double 的 1 和大于 1 的最小浮点数之间的差值:%.30f\n", DBL_EPSILON);
+    printf("double 的 1 和大于 1 的最小浮点数之间的差值:%.20e\n\n", DBL_EPSILON);
 
-	printf("float最大的有效浮点数的值（为正数），也即浮点数的最大值:%e\n", FLT_MAX);
-	printf("double最大的有效浮点数的值（为正数），也即浮点数的最大值:%e\n", DBL_MAX);
-	printf("long double最大的有效浮点数的值（为正数），也即浮点数的最大值:%Le\n\n", LDBL_MAX);
 
-	printf("float最小的有效浮点数的值（为正数），也即浮点数的最小值:%.30f\n", FLT_MIN);
-	printf("double最小的有效浮点数的值（为正数），也即浮点数的最小值:%.30f\n", DBL_MIN);
-	printf("long double最小的有效浮点数的值（为正数），也即浮点数的最小值:%.30Lf\n\n", LDBL_MIN);
+	printf("基数（进制）为 FLT_RADIX 时，long double 尾数 mantissa 的最大长度（最大位数），也可以说是浮点数的精度:%d\n", LDBL_MANT_DIG);
+    printf("基数（进制）为 FLT_RADIX 时，规格化long double浮点数的指数（也即 exponent）的最小值（为负数）:%d\n", LDBL_MIN_EXP);
+    printf("基数（进制）为 FLT_RADIX 时，规格化long float浮点数的指数（也即 exponent）的最大值（为正数）:%d\n", LDBL_MAX_EXP);
+    printf("long float 转换成十进制形式后，小数点后精确数字（能够保证精度的数字）的位数:%d\n", LDBL_DIG);
+    printf("转换成十进制形式后，规格化long double浮点数的指数的最小值（为负数）:%d\n", LDBL_MIN_10_EXP);
+    printf("转换成十进制形式后，规格化long double浮点数的指数的最大值（为正数）:%d\n", LDBL_MAX_10_EXP);
+	printf("long double最大的有效浮点数的值（为正数），也即浮点数的最大值:%Lf\n", LDBL_MAX);
+    printf("long double最大的有效浮点数的值（为正数），也即浮点数的最大值:%Le\n", LDBL_MAX);
+    printf("long double最小的有效浮点数的值（为正数），也即浮点数的最小值:%.30Lf\n", LDBL_MIN);
+    printf("long double最小的有效浮点数的值（为正数），也即浮点数的最小值:%.20Le\n", LDBL_MIN);
+    printf("long double 的 1 和大于 1 的最小浮点数之间的差值:%.30Lf\n", LDBL_EPSILON);
+    printf("long double 的 1 和大于 1 的最小浮点数之间的差值:%.20Le\n\n", LDBL_EPSILON);
 
-	printf("float最小的有效浮点数的值（为正数），也即浮点数的最小值:%.20e\n", FLT_MIN);
-	printf("double最小的有效浮点数的值（为正数），也即浮点数的最小值:%.20e\n", DBL_MIN);
-	printf("long double最小的有效浮点数的值（为正数），也即浮点数的最小值:%.20Le\n\n", LDBL_MIN);
 
-	printf("float 的 1 和大于 1 的最小浮点数之间的差值:%.30f\n", FLT_EPSILON);
-	printf("double 的 1 和大于 1 的最小浮点数之间的差值:%.30f\n", DBL_EPSILON);
-	printf("long double 的 1 和大于 1 的最小浮点数之间的差值:%.30Lf\n\n", LDBL_EPSILON);
-
-	printf("float 的 1 和大于 1 的最小浮点数之间的差值:%.20e\n", FLT_EPSILON);
-	printf("double 的 1 和大于 1 的最小浮点数之间的差值:%.20e\n", DBL_EPSILON);
-	printf("long double 的 1 和大于 1 的最小浮点数之间的差值:%.20Le\n\n", LDBL_EPSILON);
 }
 
 int main(int argc, char *argv[])
 {
-	long long int N = 100000;
+	printf("*************************************以下是各种数据类型的最大最小*************************************\n");
+    MAX_MIN();
+
+
+    long long int N = 100000;
 	double x = 0.0, step = 1.0 / (double)N;
 	double pi = 0;
 
@@ -161,20 +175,55 @@ int main(int argc, char *argv[])
 	pi = pi * step;
 	printf("Pi = %.20lf\n", pi);
 	printf("hello, world, !!\n");
-	printf("*************************************以下是格式化打印各种数据类型*************************************\n");
+	printf("*************************************以下是格式化打印各种数据类型*************************************\n\n");
 
-    	int a = 9;
-    	unsigned int a1 = 10;
-    	long int a2 = 11;
-    	long long int a3 = 12;
-    	unsigned long int a3 = 13;
-    	unsigned long long int a4 = 14;
+    int a = 9;
+    unsigned int a1 = 10;
+    short int a2 = 19;
+    unsigned short int a3 = 20;
+    long int a4 = 11;
+    unsigned long int a5 = 13;
+    long long int a6 = 12;
+    unsigned long long int a7 = 14;
+
+    printf("打印 int = 9，                      (%%d)    = %d,   (%%10d)   = %10d,   (%%-10d)    = %-10d,   (%%o)  = %o,   (%%x)  = %x \n ",a,  a,  a,  a,  a);
+    printf("打印 unsigned int = 10              (%%u)    = %u,   (%%10u)   = %10u,   (%%-10u)    = %-10d,   (%%o)  = %o,   (%%x)  = %x \n ",a1, a1, a1, a1, a1);
+    printf("打印 short int = 19，               (%%hd)   = %hd,  (%%10hd)  = %10hd,  (%%-10hd)   = %-10hd,  (%%ho) = %ho,  (%%hx) = %hx \n ",a2, a2, a2, a2, a2);
+    printf("打印 unsigned short int = 20，      (%%hu)   = %hu,  (%%10hu)  = %10hu,  (%%-10hu)   = %-10hu,  (%%o)  = %o,   (%%x)  = %x \n ",a3, a3, a3, a3, a3);
+    printf("打印 long int = 11，                (%%ld)   = %ld,  (%%10ld)  = %10ld,  (%%-10ld)   = %-10ld,  (%%o)  = %o,   (%%x)  = %x \n " ,a4, a4, a4, a4, a4);
+    printf("打印 unsigned long int = 13,        (%%lu)   = %lu,  (%%10lu)  = %10lu,  (%%-10lu)   = %-10lu,  (%%o)  = %o,   (%%x)  = %x \n ",  a5, a5, a5, a5, a5);
+    printf("打印 long long int = 12，           (%%lld)  = %lld, (%%10lld) = %10lld, (%%-10lld)  = %-10lld, (%%o)  = %o,   (%%x)  = %x \n ",a6, a6, a6, a6, a6);
+    printf("打印 unsigned long long int = 14，  (%%llu)  = %llu, (%%10llu) = %10llu, (%%-10llu)  = %-10llu, (%%o)  = %o,   (%%x)  = %x \n\n ",a7, a7, a7, a7, a7);
+
+
+    char A = 'c';
+    unsigned char A1 = 's';
+    /* long char A2 = 'v'; */   //没有long char类型
+    /* unsigned long char A3 = 'q'; */   //没有unsigned long char
+
+    printf("打印 char = c，    (%%d)  = %d    (%%c)   = %c,  (%%10c)  = %10c, (%%-10c)    = %-10c,   (%%o)  = %o,  (%%x)  = %x \n ",   A, A,  A,  A,  A,  A);
+    printf("打印 unsigned char = s，     (%%d)    = %d    (%%hhu)  = %hhu,(%%10hhu)  = %10hhu,(%%-10hhu)  = %-10hhu, (%%o)  = %o,  (%%x)  = %x \n\n ", A1, A1,  A1,  A1,  A1,  A1);
+
+
+    float b = 12.12;
+    printf("打印 float = 12.12，  (%%f)   = %f,  (%%10f)  = %10f,  (%%-10f)  = %-10f,   (%%o)  = %o,  (%%x)  = %x \n\n ", b,  b,  b,  b,  b);
+
+
+    double c = 9847.38702;
+    printf("打印 double = 9847.38702， (%%lf)    = %lf,  (%%15.7lf)  = %15.7lf,  (%%-15.7lf)    = %-15.7lf,   (%%o)  = %o,  (%%x)  = %x \n\n ",c,  c,  c,  c,  c);
 
 
 
-
-	printf("*************************************以下是各种数据类型的最大最小值*************************************\n");
-    	/* MAX_MIN(); */
 
 	return 0;
 }
+
+/*
+
+C_data_MAX_MIN.c:183:122: warning: format ‘%o’ expects argument of type ‘unsigned int’, but argument 5 has type ‘long int’ [-Wformat=]
+  183 |     printf("打印 long int = 11，                (%%ld)   = %ld,  (%%10ld)  = %10ld,  (%%-10ld)   = %-10ld,  (%%o)  = %o,   (%%x)  = %x \n " ,a4, a4, a4, a4, a4);
+      |                                                                                                                         ~^                                  ~~
+      |                                                                                                                          |                                  |
+      |                                                                                                                          unsigned int                       long int"")
+
+*/

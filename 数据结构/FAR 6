@@ -1,0 +1,5 @@
+Files:1  Matches:3  Time:0.001ms ~ Replaced:3  Time:0.001ms                                        
+- C_argc_argv.c (3 matches)
+  2      >> File Name: C_Argc_argv.c                                                               
+  24     int main(int Argc, char *argv[])                                                          
+  30         for (int i = 0; i < Argc; ++i)                                                        

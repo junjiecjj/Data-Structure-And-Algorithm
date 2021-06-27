@@ -214,13 +214,88 @@ fscanf(FILE *, "%s", char *)在读取一个文件时如果读到文件结尾,则
 
 #define LEN 40
 #define STLEN 14
-void showArray(int m, int n, int (*A)[n])
+
+size_t writeNum = 0;
+size_t readNum = 0;
+
+void showInt2DArray(int m, int n, int (*A)[n])
 {
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
         {
             printf("%5d  ", A[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void showInt2DArray_point(int m, int n, int **A)
+{
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("%5d  ", A[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void showDouble1DArray(int m, double *A)
+{
+    for (int i = 0; i < m; i++)
+    {
+        printf("%8lf  ", A[i]);
+    }
+    printf("\n");
+}
+
+void showFloat2DArray(int m, int n, float (*A)[n])
+{
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("%5f  ", A[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+void showFloat2DArray_point(int m, int n, float **A)
+{
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("%5f  ", A[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void showDouble2DArray(int m, int n, double (*A)[n])
+{
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("%5lf  ", A[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+void showDouble2DArray_point(int m, int n, double **A)
+{
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("%5lf  ", A[i][j]);
         }
         printf("\n");
     }
@@ -259,9 +334,16 @@ int main(int argc, char *argv[])
     FILE *in, *out;
     int ch;
 
-    printf("************************第1次*********************\n");
+    printf("************************ 1 *********************\n");
     //用int getc(FILE *stream) 读取.txt文件，然后用putchar(int char) 显示在屏幕
-    in = fopen("./In.txt", "r");
+    if((in = fopen("./In.txt", "r")) == NULL)
+    {
+        printf("open failed ...\n");
+    }
+    else
+    {
+        printf("open successful ...\n");
+    }
     while ((ch = getc(in)) != EOF)
     {
         putchar(ch);
@@ -269,7 +351,7 @@ int main(int argc, char *argv[])
 
     fclose(in);
 
-    printf("\n*********************第2次************************\n");
+    printf("\n********************* 2 ************************\n");
     char *S = (char *)malloc(LEN * sizeof(char));
     scanf("%s", S);
     printf("读取的字符串为：%s\n", S);
@@ -277,13 +359,13 @@ int main(int argc, char *argv[])
         continue;
     //如果输入chenjunjie回车，则S = "chenjunjie"，没有回车。
 
-    printf("\n***********************第3次**********************\n");
+    printf("\n*********************** 3 **********************\n");
     char words[STLEN];
 
     puts("Enter a string, please.");
     fgets(words, STLEN, stdin);
     printf("Your string twice (puts(), then fputs()):\n"); //如果输入chen回车，则words="chen\n\0"；
-    printf("字符串长度:%zd\n", strlen(words));
+    printf("字符串长度:%d\n", strlen(words));
     printf("words[3]=%c...\n", words[3]); //words[4]为'n'
     printf("words[4]=%c...", words[4]);   //words[4]为回车
     puts(words);
@@ -327,9 +409,9 @@ int main(int argc, char *argv[])
     words[i] = '\0';
     */
 
-    printf("**************************第4次**************************\n");
+    printf("************************** 4 **************************\n");
     /*
-该代码是统计输入的一段字符流(该字符流以\n结尾)中输入的总字符、空格和tab键的个数。
+    该代码是统计输入的一段字符流(该字符流以\n结尾)中输入的总字符、空格和tab键的个数。
     */
     int ch1;
     int count = 0, spacenum = 0;
@@ -346,7 +428,7 @@ int main(int argc, char *argv[])
     }
     printf("count = %d\n", count);
     printf("spacecount = %d\n", spacenum);
-    printf("****************************第8次*************************\n");
+    printf("**************************** 5 *************************\n");
     //用int getc(FILE *stream)先读取In.txt文件，再用int putc(int char, FILE *stream) 输出到另外的文件out1.txt
     in = fopen("./In.txt", "r");
     out = fopen("./out1.txt", "w");
@@ -358,7 +440,7 @@ int main(int argc, char *argv[])
     fclose(in);
     fclose(out);
 
-    printf("***********************第9次****************************\n");
+    printf("*********************** 6 ****************************\n");
     //用char *fgets(char *str, int n, FILE *stream) 读取文件，再用int fputs(const char *str, FILE *stream) 写入文件
     char *cr = (char *)malloc(sizeof(char) * LEN);
     in = fopen("./In.txt", "r");
@@ -371,7 +453,7 @@ int main(int argc, char *argv[])
     fclose(in);
     fclose(out);
 
-    printf("***************************第10次***************************\n");
+    printf("*************************** 7 ***************************\n");
     //用char *fgets(char *str, int n, FILE *stream) 从stdin读取数据，再用int fputs(const char *str, FILE *stream) 写入文件
     char *cr1 = (char *)malloc(sizeof(char) * LEN);
     // in = fopen("./In.txt", "r");
@@ -384,7 +466,7 @@ int main(int argc, char *argv[])
     // fclose(in);
     fclose(out);
 
-    printf("*************************第11次****************************\n");
+    printf("************************* 8 ****************************\n");
     //用char *fgets(char *str, int n, FILE *stream) 从stdin读取数据，再用int fputs(const char *str, FILE *stream) 写入stdout
     char *cr2 = (char *)malloc(sizeof(char) * LEN);
     // in = fopen("./In.txt", "r");
@@ -395,7 +477,7 @@ int main(int argc, char *argv[])
     }
     // fclose(in);
     //fclose(out);
-    printf("***************************第12次*****************************\n");
+    printf("*************************** 9 *****************************\n");
     //用int getchar(void) 从stdin读取文本，然后用int putc(int char, FILE *stream)写入文件
     out = fopen("./out4.txt", "w");
     while ((ch = getchar()) != EOF)
@@ -405,7 +487,7 @@ int main(int argc, char *argv[])
 
     fclose(out);
 
-    printf("************************第13次*********************\n");
+    printf("************************ 10 *********************\n");
     //将数组写入.txt文件
     int m = 5, n = 10;
     int A[m][n];
@@ -414,7 +496,7 @@ int main(int argc, char *argv[])
             A[i][j] = i * n + j;
 
     printf("打印数组A第一次......\n");
-    showArray(m, n, A);
+    showInt2DArray(m, n, A);
 
     //用int fprintf(FILE *stream, const char *format, ...) 将数组写入array1.txt文件
     out = fopen("./array1.txt", "w");
@@ -441,14 +523,14 @@ int main(int argc, char *argv[])
     }
     fclose(in);
     printf("打印数组A第二次........\n");
-    showArray(m, n, AA);
+    showInt2DArray(m, n, AA);
 
-    printf("\n************************第14次***************************\n");
+    printf("\n************************ 11 ***************************\n");
     //用int fscanf(FILE *stream, const char *format, ...) 读取array.txt文件中的数组
 
     int B[4][6] = {0};
     printf("打印读取前的数组\n");
-    showArray(4, 6, B);
+    showInt2DArray(4, 6, B);
     in = fopen("./array2.txt", "r");
     for (int i = 0; i < 4; i++)
     {
@@ -459,9 +541,435 @@ int main(int argc, char *argv[])
     }
     fclose(in);
     printf("打印读取后的数组\n");
-    showArray(4, 6, B);
+    showInt2DArray(4, 6, B);
 
-    printf("\n************************结束***************************\n");
+    printf("\n************************ 12 ***************************\n");
+    //用fscanf读取.txt文件(字符串，不是矩阵)
+    char buf[512];
+
+    in = fopen("./string.txt", "r");
+
+    while(fscanf(in, "%s", buf) != EOF )
+    {
+        fputs(buf, stdout);
+        printf("\n");
+    }
+
+    fclose(in);
+    printf("\n************************ 13 ***************************\n");
+    //用fread/fwrite将数组读取/写入.txt文件
+
+
+    double earnings[10] = {1.12, 2.12, 3.12, 4.12, 5.12, 6.12, 7.12, 8.12, 9.12, 10.12};
+    showDouble1DArray(10,earnings);
+    //用int fprintf(FILE *stream, const char *format, ...) 将数组写入array4.txt文件
+    FILE *Double1DFile_wr = fopen("./oneDDoubleFile.txt", "wb");
+    size_t wriNum = 0;
+    if( (wriNum = fwrite(earnings, sizeof(double), 10, Double1DFile_wr)) > 0 && (wriNum == 10 ))
+    {
+        printf(" fwrite  success\n");
+        printf("wrNum = %d\n",wriNum);
+    }
+    else
+    {
+        printf(" fwrite  failed\n");
+        printf("wrNum = %d\n",wriNum);
+    }
+
+    fclose(Double1DFile_wr);
+
+    double earnings1[10] = {0};
+    FILE *Double1DFile_re = fopen("./oneDDoubleFile.txt", "rb");
+    size_t reNum = 0;
+    if( (reNum = fread(earnings1, sizeof (double),  10, Double1DFile_re)) > 0 && (reNum == 10 ))
+    {
+        printf(" fread  success\n");
+        printf("reNum = %d\n",reNum);
+
+    }
+    else
+    {
+        printf(" fread  failed\n");
+        printf("reNum = %d\n",reNum);
+    }
+    fclose(Double1DFile_re);
+    showDouble1DArray(10, earnings1);
+
+    printf("\n************************ 14 ***************************\n");
+    //int m = 5, n = 10;
+    int C[m][n];
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+            C[i][j] = i * n + j + 1;
+
+    showInt2DArray(m, n, C);
+    FILE *Int2D_wr = fopen("./Int2D.txt", "wb");
+
+    writeNum = 0;
+    if((writeNum = fwrite(C, sizeof(int), m*n, Int2D_wr)) > 0 && (writeNum == m*n ))
+    {
+        printf(" fwrite 2D array success\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+    else
+    {
+        printf(" fwrite 2D array  failed\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+
+    fclose(Int2D_wr);
+
+    int CC[5][10] = {0};
+    readNum = 0;
+    FILE *Int2D_re = fopen("./Int2D.txt", "rb");
+
+    if((readNum = fread(CC, sizeof(int), 50 , Int2D_re)) > 0 && (readNum == m*n ))
+    {
+        printf(" fread 2D array success\n");
+        printf("readNum = %d\n",readNum);
+    }
+    else
+    {
+        printf(" fread 2D array failed\n");
+        printf("readNum = %d\n",readNum);
+    }
+    fclose(Int2D_re);
+    //用int fscanf(FILE *stream, const char *format, ...) 读取array1.txt文件中的数组
+
+
+    showInt2DArray(m, n, CC);
+
+    printf("\n************************ 15 ***************************\n");
+    //用fread/fwrite将数组读取/写入.txt文件
+
+    //************************************************************
+    //int m = 5, n = 10;
+    int **D;
+
+
+    D = (int **)malloc(m*sizeof(int*));
+
+    for(int i=0;i<m;i++)
+    {
+        D[i] = (int *)malloc(n*sizeof(int));
+
+    }
+
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            D[i][j] = i * n + j;
+        }
+    }
+    printf("D[1][2] = %d\n", D[1][2]);
+
+
+
+    showInt2DArray_point(m, n, D);
+
+    FILE *Int2D_piont_wr = fopen("./Int2D_piont.txt", "wb");
+
+    writeNum = 0;
+    if((writeNum = fwrite(D, sizeof(int), m*n, Int2D_piont_wr)) > 0 && (writeNum == m*n ))
+    {
+        printf(" fwrite 2D array success\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+    else
+    {
+        printf(" fwrite 2D array  failed\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+
+    fclose(Int2D_piont_wr);
+
+    int **DD;
+
+
+    DD = (int **)malloc(m*sizeof(int*));
+
+    for(int j=0;j<m;j++)
+    {
+        DD[j] = (int *)malloc(n*sizeof(int));
+
+    }
+
+    readNum = 0;
+    FILE *Int2D_piont_re = fopen("./Int2D_piont.txt", "rb");
+
+    if((readNum = fread(DD, sizeof(int), m*n , Int2D_piont_re)) > 0 && (readNum == m*n ))
+    {
+        printf(" fread 2D array success\n");
+        printf("readNum = %d\n",readNum);
+    }
+    else
+    {
+        printf(" fread 2D array failed\n");
+        printf("readNum = %d\n",readNum);
+    }
+    fclose(Int2D_piont_re);
+    //用int fscanf(FILE *stream, const char *format, ...) 读取array1.txt文件中的数组
+    printf("DD[1][2] = %d\n", DD[1][2]);
+
+    showInt2DArray_point(m, n, DD);
+    free(D);
+    free(DD);
+
+    printf("\n************************ 16 ***************************\n");
+    //用fread/fwrite将数组读取/写入.txt文件
+
+    //int m = 5, n = 10;
+    float **E;
+
+
+    E = (float **)malloc(m*sizeof(float*));
+
+    for(int i=0; i<m; i++)
+    {
+        E[i] = (float *)malloc(n * sizeof(float));
+
+    }
+
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            E[i][j] = i * n + j;
+        }
+    }
+    printf("E[1][2] = %f\n", E[1][2]);
+
+
+
+    showFloat2DArray_point(m, n, E);
+
+    FILE *Float2D_point_wr = fopen("./Float2D_point.txt", "wb");
+
+    writeNum = 0;
+    if((writeNum = fwrite(E, sizeof(float), m*n, Float2D_point_wr)) > 0 && (writeNum == m*n ))
+    {
+        printf(" fwrite 2D array success\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+    else
+    {
+        printf(" fwrite 2D array  failed\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+
+    fclose(Float2D_point_wr);
+
+    float **EE;
+
+
+    EE = (float **)malloc(m*sizeof(float*));
+
+    for(int j=0;j<m;j++)
+    {
+        EE[j] = (float *)malloc(n*sizeof(float));
+
+    }
+
+    readNum = 0;
+    FILE *Float2D_point_re = fopen("./Float2D_point.txt", "rb");
+
+    if((readNum = fread(EE, sizeof(float), m*n , Float2D_point_re)) > 0 && (readNum == m*n ))
+    {
+        printf(" fread 2D array success\n");
+        printf("readNum = %d\n",readNum);
+    }
+    else
+    {
+        printf(" fread 2D array failed\n");
+        printf("readNum = %d\n",readNum);
+    }
+    fclose(Float2D_point_re);
+    //用int fscanf(FILE *stream, const char *format, ...) 读取array1.txt文件中的数组
+    printf("EE[1][2] = %f\n", EE[1][2]);
+
+    showFloat2DArray_point(m, n, EE);
+
+    free(E);
+    free(EE);
+
+    printf("\n************************ 17 ***************************\n");
+    //用fread/fwrite将数组读取/写入.txt文件
+
+    //int m = 5, n = 10;
+    float F[m][n];
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            F[i][j] = i * n + j;
+        }
+    }
+
+    showFloat2DArray(m, n, F);
+    FILE *Float2D_wr = fopen("./Float2D.txt", "wb");
+
+    writeNum = 0;
+    if((writeNum = fwrite(F, sizeof(float), m*n, Float2D_wr)) > 0 && (writeNum == m*n ))
+    {
+        printf(" fwrite 2D array success\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+    else
+    {
+        printf(" fwrite 2D array  failed\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+
+    fclose(Float2D_wr);
+
+    float FF[5][10] = {0};
+    readNum = 0;
+    FILE *Float2D_re = fopen("./Float2D.txt", "rb");
+
+    if((readNum = fread(FF, sizeof(float), m*n , Float2D_re)) > 0 && (readNum == m*n ))
+    {
+        printf(" fread 2D array success\n");
+        printf("readNum = %d\n",readNum);
+    }
+    else
+    {
+        printf(" fread 2D array failed\n");
+        printf("readNum = %d\n",readNum);
+    }
+    fclose(Float2D_re);
+    //用int fscanf(FILE *stream, const char *format, ...) 读取array1.txt文件中的数组
+
+
+    showFloat2DArray(m, n, FF);
+    printf("\n************************ 18 ***************************\n");
+    //用fread/fwrite将数组读取/写入.txt文件
+
+    //int m = 5, n = 10;
+    double G[m][n];
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            G[i][j] = i * n + j;
+        }
+    }
+
+    showDouble2DArray(m, n, G);
+    FILE *Double2D_wr = fopen("./Double2D.txt", "wb");
+
+    writeNum = 0;
+    if((writeNum = fwrite(G, sizeof(double), m*n, Double2D_wr)) > 0 && (writeNum == m*n ))
+    {
+        printf(" fwrite 2D array success\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+    else
+    {
+        printf(" fwrite 2D array  failed\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+
+    fclose(Double2D_wr);
+
+    double GG[5][10] = {0};
+    readNum = 0;
+    FILE *Double2D_re = fopen("./Double2D.txt", "rb");
+
+    if((readNum = fread(GG, sizeof(double), m*n , Double2D_re)) > 0 && (readNum == m*n ))
+    {
+        printf(" fread 2D array success\n");
+        printf("readNum = %d\n",readNum);
+    }
+    else
+    {
+        printf(" fread 2D array failed\n");
+        printf("readNum = %d\n",readNum);
+    }
+    fclose(Double2D_re);
+    //用int fscanf(FILE *stream, const char *format, ...) 读取array1.txt文件中的数组
+
+
+    showDouble2DArray(m, n, GG);
+
+    printf("\n************************ 19 ***************************\n");
+
+    //用fread/fwrite将数组读取/写入.txt文件
+
+    //int m = 5, n = 10;
+    double **H;
+
+
+    H = (double **)malloc(m*sizeof(double*));
+
+    for(int i=0; i<m; i++)
+    {
+        H[i] = (double *)malloc(n * sizeof(double));
+
+    }
+
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            H[i][j] = i * n + j;
+        }
+    }
+    printf("H[1][2] = %lf\n", H[1][2]);
+
+
+
+    showDouble2DArray_point(m, n, H);
+
+    FILE *Double2D_point_wr = fopen("./Double2D_point.txt", "wb");
+
+    writeNum = 0;
+    if((writeNum = fwrite(H, sizeof(double), m*n, Double2D_point_wr)) > 0 && (writeNum == m*n ))
+    {
+        printf(" fwrite 2D array success\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+    else
+    {
+        printf(" fwrite 2D array  failed\n");
+        printf(" writeNum = %d\n",writeNum);
+    }
+
+    fclose(Double2D_point_wr);
+
+    double **HH;
+    HH = (double **)malloc(m*sizeof(double*));
+
+    for(int j=0;j<m;j++)
+    {
+        HH[j] = (double *)malloc(n*sizeof(double));
+
+    }
+
+    readNum = 0;
+    FILE *Double2D_point_re = fopen("./Double2D_point.txt", "rb");
+
+    if((readNum = fread(HH, sizeof(double), m*n , Double2D_point_re)) > 0 && (readNum == m*n ))
+    {
+        printf(" fread 2D array success\n");
+        printf("readNum = %d\n",readNum);
+    }
+    else
+    {
+        printf(" fread 2D array failed\n");
+        printf("readNum = %d\n",readNum);
+    }
+
+    //用int fscanf(FILE *stream, const char *format, ...) 读取array1.txt文件中的数组
+    printf("HH[1][2] = %lf\n", HH[1][2]);
+
+    showDouble2DArray_point(m, n, HH);
+
+    free(H);
+    free(HH);
+    fclose(Double2D_point_re);
+
+    printf("\n************************over***************************\n");
 
     return 0;
 }
